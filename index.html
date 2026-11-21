@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dream AI</title>
-<link rel="manifest" id="mf" href="manifest-weiss.webmanifest">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNjQgNjQiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0ibGYiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM5M2M1ZmQiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyNTYzZWIiLz48L2xpbmVhckdyYWRpZW50PjxtYXNrIGlkPSJtZiI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iNDMiIGN5PSIyNCIgcj0iMjEiIGZpbGw9IiMwMDAiLz48L21hc2s+PC9kZWZzPjxjaXJjbGUgY3g9IjI5IiBjeT0iMzQiIHI9IjI0IiBmaWxsPSJ1cmwoI2xmKSIgbWFzaz0idXJsKCNtZikiLz48cGF0aCBkPSJNNTAgNDBsMS42IDQuNCA0LjQgMS42LTQuNCAxLjZMNTAgNTJsLTEuNi00LjRMNDQgNDZsNC40LTEuNnoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=">
 <link rel="icon" type="image/png" sizes="64x64" href="icons/favicon-64.png">
-<link rel="apple-touch-icon" id="ati" href="icons/apple-touch-icon-weiss.png">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAWoUlEQVR4nO2dW5Ac5XXH/+fr7rnsrnaFpEVidUMgDIYI2QLjFJiqGFN2VYpcbJOHvDgPTvnBTl5SeTBVcd5yKacq8UMqqUry4LhsTJxKlQ0Vx4AhDjE3I0CAIEiykECrRUK70kp7mZ3p/s7Jw9eXr2emV7srsd27/n6SVjPTl7l8/zn/c05/3UsiAoejH6rsF+CoLk4cjkKcOByFOHE4CnHicBTixOEoxInDUYgTh6MQJw5HIU4cjkKcOByFOHE4CnHicBTixOEoxInDUYgTh6MQJw5HIU4cjkKcOByFOHE4CnHicBTixOEoxInDUYgTh6MQJw5HIU4cjkKcOByFOHE4CnHicBTixOEoxInDUYgTh6MQJw5HIU4cjkKcOByFOHE4CnHicBTixOEoxInDUYhf9gtYVQSAwFx4VVG5r2UNQOv+IrUiEIAITgzLZX2KQwCRbkFoxmxbpls0Pc8X2/jYdhpuOMEsxnqzFU40QQQAcx28f0lOX5AP5ujcjExe1Bo006F799JAAIELJ4uxTsRhQoWiOJM4P4/jk3LiPE6e03MdtNoCiEdQkLaW23cEn7/dZeKXZ82LI5UFEdoRjp3D4TN8clJmFkRH7CmQSMMnEUAkZFy7Mfj8fg+J7zgWYW2LgxNZXFzAaxPy+jifnZEoYp/gE3wfzBAiFogAAij67X1qpBlv6FictSoOTkzk0gJeOoVD43x+Riuwp8jzwAyRuE4xtStBWpruvcm/ZSs5ZSyRNSkOARShE+GlcXnxpEzNaB9cUyQgownAVoYAiBijw+ozt5BLQpfOGhNHWqD+chJPHeNTU9qDNBS0ECeaQF4ZIiBAC913s9pQd2FjGawlcZhxnWvjZ+/IwXeZQ64pEUBb0QKpMpApo6Nx/ah3YKcS1xhdDmtGHKYkGZ+Wx96U0+e57gl5EAabpfE/SxkiqVZIqXtvVL6COFNZDmtAHGZAifDie/LUEW63ue6BBYCwWZz0eLvcxGwcalw/qm4bI8DVrsuj6uIwSYZmPHFMXnhHK2ZfEYuYRelRNPQqIy5SwKA7dpOnXPm6bCotDqOMVogfHeY3J7hGLEQscQUSy6JfnpE8jIixZVjt2+7CxkqorjjModTZNv79kD5+ThqesJCIQBC7SUFtkoYTAkKNW7fRYM0VKSuhouIwMWOujX97VZ+c5IYHNiOf6ABFyrCSUw2p17zbxtxhlBVSxQ/OKGMhxA8O6ROTXPegOVOGJD/R100SvxFAM41uoN2bAFfBroiKRg7NePRNOX4ujhkmMjD6ZKBxbpq6SaIMAjoRbtyiAo+4ml+CylM5cZjk4KdH5Y3TumGOksRRo3/VGocMSxlx54OlVvP2bDZ3XHtjJVRLHKbT9fIpee4dXSNhQfKnuGq1FomdcAg1PNq5ScHVKSulQuHWlCcTF/HEEVYscVCwNNG/au3TAQMELDQ6jI1NgYsaK6Uq4jBD3I7w2Ft6YYEVIa1aRQDuqU0sN0keyX6CEGreNqyUovU4R3aVqIo4ICDgf47zqSnxFeIeKLIEE0X9DIFInGfYxiNCm5tiP+ZYLpXIOYyhvHteXjjBNSXpwfdFjrVmj9uRA2kiIkHgbdrg/OSKqIQ4AESMp45KGEmg8lXrIj3QvHSQKkQggiDASJPgEo4roHxbMVMuDo3LySkOyKpaUaAMy2442UOyr2wTBQzWnTCuiJIjhzGU+Y48e4JJWCg39xP9apOuqjV1E06WJYu47gngznRbOWVHDgGAl0/h3CX2KGl6okcZYlWt9szhOGZIpoy4ZiFfUc1b7XezzigzcqRh4+VT7KVtUE6WFhxrhZWKws5Pka3DAk+RKlv5a51SxSEgwuEJmZzhQJlOebaorzLSWJJJw/qZPW7fcKyUMr9ciqAZhybSllZBnpFgu0kcIewcJN8+jzguiR0rpjRxmJE7MSUT0+IneSi6eqBiScHugQIC4TTjSCqX9AaATiSdyCxezbe1rijZlt88I+0OE/XUIF2ZRFcP1FaSlYfGShJARKAWotV+O+uM0nIORZjryLGz7CtoBop6oHmJmDu2m2SuYk0CAkQLZtur93bWJeVEDuMpJ6fk4kL8Cqy+ReYmWafLdhO7akUmiOSGAEJAO5Tp+SxPdayAMm3lxBQ6ISNNOPp1xzlXxFptLoEkusncJLYUANQJefISw+6fOpZJObaiCJHGiUlzALagak2/9Jmb5KvWZKU0ZmRmRABkck7BzR69AkqIHGZkz83hwrxQetLiZapW6VO1psowW1iljQh8hdMXWLO4aWArpgxxCACMX+BWBKUIwBKqVnMjX7WmMSNTWLa5gpyd5vNz8eOOFVCCOMw3+ewMwjDOCS5ftVr5aVa19rhJVrMAijAf4uRkkok4lk8Z4jDXdGvBV2BO5vv1VK3mRlEPNKcMq2dqFb3U6ehjZwVuSsdKWW1xmCHsRHLuIpM9lkVVq9nKdhPklGEfyE2DCgAW+J4ceZ87kUs7VsiqRw4BgEttmml1H1LpX7Umw99btcL+YSmDARFhEQ9y9qIc/yDZuWOZlNPnuLSACJTMME/GHsn3XsyZsd1e0+UmuZhhtpZc7FFE8+3olXd1Ce9wXVCOrcwsSJQM2VKq1kwZZot8aQPk7kqyqhYEHg69xzMLopLDN46lU07kaLUljJLMAldatVqtM7G0EXc7PrjIB0+4VulKKEcc7Ui0FoDSqACssGqF5SZWbLF3xf97lCPtWqXLZtVtRQAgjETrrMlx+arVbFpQtaZuImlim6zAjJrCL8/ogycZgHbBYzmUPJ9jqVVrPzeJt4w3it0kU0ZW+ACsf/K6DiMowMlj6ZQmjrQxCuS9wM5ApdhNkqoVyGyoe+eJXGqeHH0/euaoJnKZxzIoRxyeIiIyw2R6pHbVmstAjRL6uUncF0kWpFe/z0Qmcc3LQj70o6/o6Tlx+lg6qy0O06wMPCilxBraPsoAkrFNlosVUeKNMmUA1h7szQUi8D06eyH6j4NMrmxZMuVEjkaNPA/CLFmEKKha893xXNUqSZ6R7DZti4mYiJQ1QljQ9PnpN8OXT7BSYO73shx5yhHHYD2+aixwuarVqllQULXmEhRJKhe72ImDDUFH3/m5npwVpVz8uDyrbisAgJEmFESEUnksXrWalRavWrM8I3Uby7JEwIzAo/fPh//8dKQ5fS5HIaseOQgAhhto+GRiAFtFyrJ6oP3dBCK2MvKba0HD55ffCb//vFYUZzOOIsqJHAMBNg+r7Ejp5arWZbhJV1GTy09h2vMNXz96sPOfr2qXfCxOOXNIlaLRIQqj7JG0as0XI1kVsyw36a594vXT4oV8ir79s/ZTh7VKzppx9FLaHNLRQQFUOmBp1Wq7ibljLlJb1APN3CQLD0kGasUMiHBuh+Qp/scn2z99Q3ulxo8q5z2ldUh3bVaNOiXf2j5VazyQ1lIbyRlK1kbLF8NpRJF0JlE64YMAj/gfnmz/+JBWKkt9VpkqHw0sQRzm6OjYCAYD0ebkhKVVrb09UNgxw0pTrAQ22Q+6pWP04VP0T0+2H3meza8gXeUJY+0Q063kPVSPciKHAEMN2j3qh1H81VlJ1Wq261e1pvtKL1eapSPplgCLEFHNix7+eetvf6wvzouiVbIY83Zee58fP1pJXQAoTRwCAHu3CJJDHb1l5+WrVlmsao11ZdmTWE8tsVeZLIcann7ytdY3fhC+PQFzPaDVCSFvnMEL7yLiil6AuxxxmM/iljE1VCfNJJIb4OVVrV1uYokgcxNke0DsKZI+lwhYaKgmJ862/+yRhUee051IlHXJkA8DRZjt4K33ZXKW/++soJJToEsSByDA1g24flR1srCQ/FhpDzRXtSJzE2vDJBwBXStoRt2DDjvf/u+Frz8cvnJSiOK4dtWHzcw5en1Czs0JR3Jw/Crv/2pR5nwOItq/k8R00rMic8lVq5VaFlatsDfMwke+Jxvf1QwQDQTR26cW/vyR1l/9MDwyIURxBq35qgUS86H/YlwiLTUfr53mmXYVZzGWJg7zUezfoTYPqUgTrLQD+THo4ybpOvmQYP7LznBBKo14Xeus7a6SJ5akiLBQLYCH8OnXW1//3sI3Hw3feE8AeCouZ/jKVCICIpyZkbfPcE1BESbn5LUJASrXjitPHAQWDDfpY7tVh2NxJCG/YOYObEtIwomdTCCnjGyFfJ6BnJjSNeMBZwFriNBADVHYefzV1te/23ro4fCJ1/X0nCiCUnHOpBmak1NsFn2zEmc28foAXhmXSy3xTPLL8vJpSdesDuVf+/yeG9WzR1Voru5mDSfydoBlVq2p9aAnz8jijr00TXEyMUFAAwGYw18cCV885m0b8T62xz9wg9q3yxvdIF6PE4ilXSC+fDKZiygnPwG02vLSqXhCqwhqCm+f4Q9m6dohSndCFbj0MsmVhMgrxsTYf3kmevZop+nFmZo1Zqmh9Ot0wVxrMr6fzg7JtbySrbvzU6tFFv/JKw+Sy3iIRESiiFoRfN/fOEB7tgY3bcMNW2nXqLd1BBsa8D0TUewxFQAsCENMzcj4lJy+wOOzNDFPE5dEkdjrXb/Z+9QNtH+MRgfjB1libZVFyeIwv9Ht3Sn+5o9D3YmEsrK262vdrYycjC5Xm/R73F6KrjN1cxpKNjen2RBEJNIUauqEEtSCZg01L9o8HGwa8oebVK+h5jEBLGiFaq4lF2b4wmy0IKhtqFMdni+1AL1X3g41GLRpSH10K31iJ35tKw3UPrwPfkmULA4kweM7z+mnDneavmRnySZ5RrebSNdXfwlVq+U1kO6lEMtN0KMMdL2e+HlJABJmYYZm0kLM0AJmsI7jnKeo3qChEX94ozcwqHwvy6J6P3TjIxFLqMn36bphun1M3T6GPZtoqCSVVEIcIEzOyF88Fs7OhYoonUzarYye4Y+rVmRuItYwZ7rpI6lcSIA1h5mz/SfK6N5tlgRl+4/fDNL/maXWoNGxxtCwD0U6PslvMZsw+iAg1NKKlOerm7fRAzfjzp0mZq025YsDibk8fpi/+2x7wGMtlHMT+6vfpQxcDTfpN/a9m9saBeJfNJZTLZKwlFZFDBapN9TQxmB4o19vesoDa+F+/XKCaEFHk+/TtmH6+HbvwA7ctBleeeedVUIc5mONWP7mv/Tb4526l5zMgtyY2V99IDkKnx885JVhD3B6O+cmSEI9km2TzbqFZcWzLknZKXCXFQJgFs3wFDUHvQ2b/KERv9FUwtJ1hC8S2jiobttGB7bnEo5SYoahEuJAEjxOTspfPhZGnTA+er6Im8Sb9biJnWf0pgtdIcFa1NdNMvH1GFlXHoPEnjh9dlu1BGGwFhYEARob/Ot2NxtB/KQEMOiBfd5n9tI1zewDKbdUQennyqYoAguu30JfvNNrc/yqcsrIvtO57ni8XjqEZt3klrWh5SbJ3ySQ2EdPMmVIlzLEUkbywoDsiUSyyjr/P4QhAvIo8NFqY5Dp5lHqcJKECq4dpt+9Fdc0wRJfmNXMLymXqogDiT4+t0/d85HaXBsKeWUAgBkAcyuvgHgsJRVIFmySDbM8I/1CW6Sbp5LKhJSkEdmJNrbZAfad/OvJeQ1EmEWL943fH3jwTk8LQUCEUGP/mPI80gJFUBVofxkqJA7ER2vpS/eovdfVWiG6zmvt7YECPW6CbOTQ5SYAuo6M5/wl2bftX5YyMpGlQcvSSrpCzk3sHQKKZLYT/NEDA3d9xNs1TGMjpAUiaNTUHTviOqVSVEwcBAiGGvTV+/0tI0EnQjyvAoLemTt22E/dJB0PzivDhH0rriB3yozlJl37MUsk93Sce9bkqXKvJ3nqZMceyfS8+uLdja98NogYQ3V8fLsKNUWC3dfQTVsI1bsSd7XEAYAIWjC2kb52f9BsBKGO9XHZmTu296Ofm+SKnVzG0M9NUlOw3cR6AWm4SfOYAjeBCHyS6Tn6jX2Nhx4MTKYJ4M6daDYo1DiwA9nJoVWicuIA4BGYcfN19NX7g8APInMh0bzN91YfmQKs233cJD/8mdi63CT518dNkjViUXW/HsutICLiK5meo0/e0vjrLzUaARHi1sXezbRzI+o1dceOiv5y5CqKA4A5V+DA9fTHn/P9Wi3Scf6RpRq5uJ7ctUao103SL7fVoS92EwBdrRTbTZDlGXaWY/81ZuQruTBPd91S/7svN4cHSCSuQVjgKey7jvZsoe0jJGVXrX2pqDiQFC937KE/+U1/cKDWDqEoE4Ign59awRy2m3Q5Rd+q1ZJYlmfk+xnZ8yZ/+1St1jrmQY/kQsu7b//At/5wYOMgsWQKiOc6XUf33ZC+lspRlSZYEaY59s4H8q2fhKc+6DRrwkwSp4hZGmGbQq5qtb7oyF0+W/psmO1QciOdbohUavkGblqbJOsTCbPMdYLf+1TzoS/4tYDMGyl6g9Wk6uJA8vGduyR//0R06GTY9HU+YUyCfFeeYXfHYWkozTOkV1KZWdgBIK1ac2Wt5De0dqiI2yEJ/K89MPDl+32zqIKucVnWgDiQ6KMT4fvP8w9fahNHNU/i43NpbMjnp121iTVzx8ozet0E/bvjaSDJZhfl3cS8EiIQ+FKLdl3bfOjB2r23elXogq+YtSEOWF++54/Jvz4TnTrXHqgxhLgrZnS5CXpiRm9x0ddNYKTQx03Qd3NAkbRD6ejg/o83/vR3grFNxIw1/SvT14w4kHxNFWFqBt97Lnr6jVBHUd0XAXH2OyOX6SZ9zSJ1E+uRRZShCJpltk07ttS/8rnaF37dB7DWlYG1JQ5DmsG9ckIeeS46/F7HI655wmnH0xrCJc/csdzEyj+QrJAda0UuBTaymGvTQN3/rbvqX74/2HYNJTnp6nweHyJrTxxIBs/8ismfHuYfvRSeOBt60IEPxFFk0ZhhFymxhvqMfR83SZYCUEDEMt9W9Zr3qVuDP/h0bf8eBUBzmdNzri5rUhyGNITMt/Gzt/Tjr+kjE5GOoronngKDkp5EFjO6E8kusyhyk+QuAaTALO0I7dAbGfLvvsV/8G7/E3s9VGMGxtVlDYvDkFp7qPHScX7qDX79ZHR+NiLhwIOnGKC0Jbq8qjUpbSh+IgmZWh0EfrBrVH369tpn96ubt6t0h5VtV6yYNS8OAAKwFczHz8uLx/jgcT5yOro4z2EY1XxSxCr+WqcFjtgtsjTBhKQntLFmMFMnolCj2fC3jtCBG4N7b/U+eZM32ADWrywM60EcKbnALpiYlsPv6TdPybEzfHoyXIi8+QUdhZFS5CkQxBzvSlsa5jxYLaQjYZEgCBo12tDgvWONj+6Q23f7t+2i4WYsBM2VmKz1obKuxGEQiQ9rpYRazs/QqSkZn4rGp/jcJXV+li/O6vm2bneYGQwEiup1NdjwNg56mzfIto2yc7O/a9TbvhkjA0gPmppgQ6qKB1GvOutQHClGJek1FPKLJNLJadAAAAUoBU/B99B7/Fyb+Z6VmcC3OqxncdikHQ5TcSw+xpJ00ojWWwGyLH5VxNFL0dv+VVVCH8q/BENZOBFclvXSzHN8CDhxOApx4nAU4sThKMSJw1GIE4ejECcORyFOHI5CnDgchThxOApx4nAU4sThKMSJw1GIE4ejECcORyFOHI5CnDgchThxOApx4nAU4sThKMSJw1GIE4ejECcORyFOHI5CnDgchThxOApx4nAU4sThKMSJw1GIE4ejECcORyFOHI5CnDgchThxOApx4nAU4sThKMSJw1GIE4ejECcORyH/D4ZJAOUxFnIZAAAAAElFTkSuQmCC">
 <meta name="theme-color" content="#0b0a1f">
 <meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Dream AI"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -41,7 +41,7 @@ input,textarea{background:rgba(255,255,255,.05);border:1px solid var(--bd);borde
 .hole{position:absolute;left:50%;bottom:8px;width:170px;height:40px;margin-left:-85px;border-radius:50%;background:radial-gradient(closest-side,#000 70%,#0a1a3d);box-shadow:0 0 0 2px rgba(96,165,250,.7),0 0 28px 6px rgba(59,130,246,.55);transform:scale(0);animation:hole 3.2s 2s both}
 @keyframes hole{0%{transform:scale(0)}16%,82%{transform:scale(1)}100%{transform:scale(0)}}
 .mn{position:absolute;left:50%;bottom:30px;width:84px;height:84px;margin-left:-42px;opacity:0;filter:drop-shadow(0 0 18px rgba(196,181,253,.6));animation:moon 4.4s .3s both}.mn svg,.st svg{width:100%;height:100%}
-@keyframes moon{0%{opacity:0;transform:translateY(14px) rotate(0) scale(.8)}10%{opacity:1;transform:translateY(0) rotate(0) scale(1)}22%{opacity:1;transform:translateY(0) rotate(0) scale(1.14,.82);animation-timing-function:cubic-bezier(.2,.7,.3,1)}46%{opacity:1;transform:translateY(-380px) rotate(0) scale(.92,1.12)}56%{opacity:1;transform:translateY(-392px) rotate(-14deg) scale(1);animation-timing-function:cubic-bezier(.6,0,.9,.4)}72%{opacity:1;transform:translateY(0) rotate(0) scale(1.06,.94)}86%,100%{opacity:0;transform:translateY(46px) rotate(0) scale(.12)}}
+@keyframes moon{0%{opacity:0;transform:translateY(14px) rotate(0) scale(.8)}10%{opacity:1;transform:translateY(0) rotate(0) scale(1)}22%{opacity:1;transform:translateY(0) rotate(0) scale(1.14,.82);animation-timing-function:cubic-bezier(.2,.7,.3,1)}46%{opacity:1;transform:translateY(calc(var(--fly,380px)*-1)) rotate(0) scale(.92,1.12)}56%{opacity:1;transform:translateY(-392px) rotate(-14deg) scale(1);animation-timing-function:cubic-bezier(.6,0,.9,.4)}72%{opacity:1;transform:translateY(0) rotate(0) scale(1.06,.94)}86%,100%{opacity:0;transform:translateY(46px) rotate(0) scale(.12)}}
 .st{position:absolute;left:50%;bottom:62px;width:96px;height:96px;margin-left:-48px;animation:jump 1.7s 3.9s cubic-bezier(.3,.8,.4,1) backwards}
 .st svg{filter:drop-shadow(0 0 14px #3b82f6);animation:pulse 3.2s ease-in-out infinite 5.6s}
 @keyframes jump{0%{opacity:0;transform:translateY(82px) scale(.1) rotate(0)}12%{opacity:1}42%{transform:translateY(-130px) scale(1.2) rotate(180deg)}64%{transform:translateY(8px) scale(.9) rotate(360deg)}80%{transform:translateY(-34px) scale(1.05) rotate(360deg)}100%{transform:translateY(0) scale(1) rotate(360deg)}}
@@ -139,7 +139,7 @@ dialog{max-height:92vh;overflow:auto}
 .f2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dh{margin-top:6px}.ev.old{opacity:.5}
 .galg{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}.galg img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer;border:1px solid var(--bd)}
 #vt #tp{position:static;width:100%;margin:0;padding:0;border:0;box-shadow:none;background:none;animation:none}
-#spl{position:fixed;inset:0;z-index:60;display:grid;place-content:center;justify-items:center;gap:14px;background:radial-gradient(60vmax 60vmax at 50% 40%,#1d1950,#0b0a1f);transition:opacity .6s}#spl.out{opacity:0}
+#spl{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:radial-gradient(60vmax 60vmax at 50% 40%,#1d1950,#0b0a1f);transition:opacity .6s}#spl.out{opacity:0}
 #spl .sm2{width:96px;height:96px;filter:drop-shadow(0 0 24px rgba(59,130,246,.7));animation:sb 2s ease-in-out infinite}#spl .sm2 svg{width:100%;height:100%}
 #spl .ld{width:120px;height:4px;border-radius:2px;background:var(--bd);overflow:hidden}#spl .ld i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--v),var(--q));animation:ldb 1.8s ease-out forwards}
 @keyframes sb{50%{transform:translateY(-8px) rotate(-6deg) scale(1.06)}}@keyframes ldb{to{width:100%}}
@@ -153,6 +153,36 @@ dialog{max-height:92vh;overflow:auto}
 #dlg .sc h4{margin:14px 0 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--q);font-weight:600}
 #dlg .ft{padding:12px 18px;border-top:1px solid var(--bd);display:flex}
 #dlg .dg{width:100%;margin-top:12px;color:var(--er);border-color:rgba(251,113,133,.4);background:rgba(251,113,133,.08)}#dlg .dg:hover{border-color:var(--er)}
+#bplus{font-size:22px;line-height:1;padding:0 14px}
+#att{display:flex;gap:8px;padding:8px 16px 0;max-width:812px;width:100%;margin:0 auto;flex-wrap:wrap}#att:empty{display:none}
+.achip{display:flex;align-items:center;gap:6px;background:var(--p2);border:1px solid var(--bd);border-radius:10px;padding:4px 6px;font-size:13px;max-width:100%}.achip img{width:34px;height:34px;object-fit:cover;border-radius:6px}.achip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:160px}.achip button{border:0;background:none;padding:0 4px;color:var(--mu)}
+.uth{display:block;max-width:180px;max-height:140px;border-radius:8px;margin-top:6px}.fchip{margin-top:6px;font-size:13px;opacity:.85}
+#bok{background:var(--q);border-color:var(--q);color:#06201c;font-weight:700}
+.plan{border:1px dashed var(--bd);border-radius:12px;padding:8px 10px;font-size:13px}.plan h4{margin:0 0 6px;color:var(--q);font-size:12px;letter-spacing:.14em;text-transform:uppercase}.plan ul{margin:0;padding-left:16px;color:var(--mu)}.plan li{margin:2px 0}
+.think{display:inline-flex;align-items:center;gap:8px}.think .mm{width:24px;height:24px;display:block;animation:mbob 1.3s ease-in-out infinite;filter:drop-shadow(0 0 8px rgba(59,130,246,.6))}.think .mm svg{width:100%;height:100%}.think .th{animation:up .5s 3s backwards}@keyframes mbob{50%{transform:translateY(-7px)}}
+.b a{color:var(--q);text-decoration:underline;word-break:break-all}
+#dprev[open]{display:flex;flex-direction:column;padding:0;overflow:hidden;width:min(900px,96vw);height:min(720px,92vh)}#dprev .hd{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--bd);flex-wrap:wrap}#dprev iframe{flex:1;border:0;background:#fff;width:100%}.beta{font-size:11px;border:1px solid var(--am);color:var(--am);border-radius:999px;padding:1px 8px}
+#side{min-width:0;overflow:hidden;transition:width .2s,padding .2s}.sh{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#bfold{border:0;background:none;color:var(--mu);font-size:24px;line-height:1;padding:0 8px}#bfold:hover{color:var(--tx)}
+@media(min-width:761px){body.fold #side{width:0;padding:0;border:0}body.fold #bmenu{display:inline-block}}
+#list{overflow-x:hidden;grid-template-columns:minmax(0,1fr)}.it{min-width:0}.it span{min-width:0}
+.nav{display:grid;grid-template-columns:minmax(0,1fr);gap:2px}.nav button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:1px solid transparent;border-radius:8px;padding:8px 10px;font-size:14px;color:var(--tx)}.nav button:hover{background:rgba(255,255,255,.05)}.nav button.on{background:var(--p2);border-color:var(--bd);color:var(--tx)}
+.nav svg,.plr svg{width:18px;height:18px;flex:none;stroke:var(--q);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.plr{display:flex;align-items:center;gap:12px;border:1px solid var(--bd);border-radius:12px;padding:12px 14px;background:rgba(255,255,255,.03)}
+.think{display:inline-flex;align-items:center;gap:9px}.think .th{animation:none}
+.dot,.cur::after{width:10px;height:10px;border-radius:50%;background:#3b82f6;box-shadow:0 0 10px #3b82f6;animation:dotp 1s ease-in-out infinite}
+.dot{display:inline-block}.cur::after{margin-left:5px;vertical-align:baseline}
+@keyframes dotp{0%,100%{transform:scale(.45);opacity:.7}50%{transform:scale(1.15);opacity:1}}
+.b pre{position:relative;white-space:pre-wrap;overflow-wrap:anywhere;padding-top:38px}.cpy{position:absolute;top:6px;right:6px;font-size:12px;padding:3px 10px}
+.si{width:16px;height:16px;stroke:var(--q);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-right:8px;vertical-align:-3px}
+#dlg .sc{box-shadow:0 10px 26px -18px rgba(0,0,0,.7);background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015))}#dlg label{font-size:13px}
+#dlg .hd{position:sticky;top:0;backdrop-filter:blur(8px)}#dlg .sc h4{display:flex;align-items:center}
+#lim{white-space:pre-line;max-width:812px;width:calc(100% - 32px);margin:8px auto 0;padding:8px 12px;border:1px solid var(--am);border-radius:10px;color:var(--am);font-size:14px;background:rgba(251,191,36,.08);text-align:center}
+.limg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.um{height:8px;border-radius:4px;background:var(--bd);overflow:hidden;margin-top:6px}.um i{display:block;height:100%;background:linear-gradient(90deg,var(--q),var(--v));transition:width .4s}.um.hi i{background:var(--er)}
+button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed}
+#disc{text-align:center;font-size:12px;color:var(--mu);padding:2px 16px 10px}
+.gw.bad{animation:none;aspect-ratio:auto;background:rgba(251,191,36,.08);border:1px solid var(--am);padding:14px;display:block}.gw.bad a{color:var(--am);text-decoration:underline}
 </style>
 </head>
 <body>
@@ -183,9 +213,9 @@ dialog{max-height:92vh;overflow:auto}
 
 <div id="app" hidden>
 <aside id="side">
-<div class="brand wm"><span id="sm" class="mo2"></span>Dream AI</div>
+<div class="sh"><div class="brand wm"><span id="sm" class="mo2"></span>Dream AI</div><button id="bfold" title="Seitenleiste einklappen" aria-label="Seitenleiste einklappen">&laquo;</button></div>
 <button class="pri" id="bnew">Neuer Chat</button>
-<div class="nav" id="nav"><button data-v="c">Chat</button><button data-v="t">Timer</button><button data-v="k">Kalender</button><button data-v="b">Bilder</button></div>
+<div class="nav" id="nav"><button data-v="g"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Geplant</button><button data-v="t"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6M12 2v3"/></svg>Timer</button><button data-v="k"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Kalender</button><button data-v="b"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg>Bilder</button></div>
 <input id="q" placeholder="Chats durchsuchen (Strg+K)" aria-label="Chats durchsuchen">
 <div id="list"></div>
 <div class="acc">
@@ -215,13 +245,24 @@ dialog{max-height:92vh;overflow:auto}
 <button class="pri" id="cgo">In den Kalender eintragen</button>
 <div id="cl" style="display:grid;gap:8px"></div>
 </div></section>
+<section id="vg" class="view" hidden><div class="vin"><div class="mu sm">Das ist geplant und kommt vielleicht noch:</div>
+<div class="plr"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Interaktiver Sprachmodus mit der KI live</span></div>
+<div class="plr"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>PDF-Dateien lesen und zusammenfassen</span></div>
+<div class="plr"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Chats als Datei exportieren</span></div>
+<div class="plr"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Spiele speichern und teilen</span></div>
+<div class="plr"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Heller Modus</span></div>
+</div></section>
 <section id="vb" class="view" hidden><div class="vin">
 <div class="mu sm">Stil der Bilder</div><div class="seg" id="sty"></div>
+<div class="mu sm" style="border:1px solid var(--bd);border-radius:10px;padding:8px 12px">Dies ist eine kostenlose Bildergenerierung. Sie kann deine Wünsche nicht immer perfekt umsetzen. Es kann ein Bild alle 45 Sekunden erstellt werden.</div>
 <textarea id="bp" rows="3" placeholder="Beschreibe dein Bild, zum Beispiel: ein Hund am Strand"></textarea>
 <button class="pri" id="bgen">Bild erstellen</button>
 <div class="mu sm" style="margin-top:6px">Deine letzten Bilder</div><div id="gal"></div>
 </div></section>
-<div class="inp"><textarea id="in" rows="1" placeholder="Schreib etwas, zum Beispiel: Erstell mir ein Bild von einem Hund"></textarea><button id="bmic" title="Mit der AI sprechen" aria-label="Mit der AI sprechen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button><button id="bimg" title="Bild aus dem Text erstellen">Bild</button><button class="pri" id="bsend">Senden</button></div>
+<div id="lim" hidden></div>
+<div id="att"></div>
+<div class="inp"><button id="bplus" title="Datei oder Bild hinzufügen" aria-label="Datei oder Bild hinzufügen">+</button><input type="file" id="fi" hidden multiple accept="image/*,text/*,.md,.csv,.json,.html,.htm,.css,.js,.ts,.py,.xml,.log,.java,.c,.cpp,.h,.yml,.yaml,.sql,.sh,.ini,.php,.rb,.go,.rs,.kt,.swift"><textarea id="in" rows="1" placeholder="Schreib etwas, zum Beispiel: Erstell mir ein Bild von einem Hund"></textarea><button id="bmic" title="Mit der AI sprechen" aria-label="Mit der AI sprechen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button><button id="bok" hidden title="Diktat beenden">OK</button><button id="bimg" title="Bild aus dem Text erstellen">Bild</button><button class="pri" id="bsend">Senden</button></div>
+<div id="disc">Dream AI ist eine KI und kann Fehler machen.</div>
 </main>
 </div>
 
@@ -232,24 +273,26 @@ dialog{max-height:92vh;overflow:auto}
 <dialog id="dlg">
 <div class="hd"><span class="lg" id="slg"></span><h3 class="wm">Einstellungen</h3><button id="cx" aria-label="Schließen">&times;</button></div>
 <div class="bd">
-<section class="sc"><h4>Antworten</h4>
+<section class="sc"><h4><svg class="si" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>Antworten</h4>
 <label>Länge</label><div class="seg" id="slen"></div>
 <label>Ton</label><div class="seg" id="stone"></div>
 <label>Denken: wie lange die AI nachdenkt</label><div class="seg" id="eff"></div>
 <label for="cs">Eigene Anweisung (optional)</label>
 <textarea id="cs" rows="3" placeholder="Zum Beispiel: Erkläre alles mit Beispielen aus dem Alltag."></textarea></section>
-<section class="sc"><h4>Sprache</h4>
+<section class="sc"><h4><svg class="si" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6"/></svg>Sprache</h4>
 <label>Antworten vorlesen</label><div class="seg" id="sspk"></div>
 <label for="cv">Stimme</label><select id="cv"></select></section>
-<section class="sc"><h4>Modell</h4>
+<section class="sc"><h4><svg class="si" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>Modell</h4>
 <label for="cm">Welche AI antwortet?</label>
 <select id="cm"><option value="openai/gpt-oss-20b">GPT-OSS 20B (schnell)</option><option value="openai/gpt-oss-120b">GPT-OSS 120B (stärker)</option></select></section>
-<section class="sc"><h4>App auf dem Handy</h4>
+<section class="sc"><h4><svg class="si" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M11 18h2"/></svg>App auf dem Handy</h4>
 <label>Installieren</label>
-<div class="row"><button id="bapk">Android: installieren</button><button id="bios">iPhone: Anleitung</button></div>
-<label>App-Logo</label><div class="seg" id="sicon"></div>
-<div class="mu sm" style="margin-top:8px">Das Logo gilt für neu installierte Apps. Zum Ändern die App entfernen und neu installieren.</div></section>
-<section class="sc"><h4>Konto und Version</h4>
+<div class="row"><button id="bapk">Android: installieren</button><button id="bapk2">Android: APK</button></div>
+<div class="row" style="margin-top:6px"><button id="bios">iPhone: Anleitung</button></div>
+<label>Websuche: aktuelle Infos und Webseiten lesen</label><div class="seg" id="sweb"></div>
+<div class="mu sm" style="margin-top:8px">Mit Websuche kennt die AI aktuelle Dinge und kann Webadressen wirklich aufrufen.</div></section>
+<section class="sc"><h4><svg class="si" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Nutzung</h4><div id="usg" style="margin-top:12px"></div></section>
+<section class="sc"><h4><svg class="si" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Konto und Version</h4>
 <div class="row" style="margin-top:12px;align-items:center"><button id="cup">Nach Updates suchen</button></div>
 <div class="mu sm" id="ver" style="margin-top:8px"></div>
 <button id="cdel" class="dg">Konto und alle Chats löschen</button></section>
@@ -257,6 +300,14 @@ dialog{max-height:92vh;overflow:auto}
 <div class="ft"><form method="dialog" style="flex:1"><button class="pri" style="width:100%;padding:10px">Fertig</button></form></div>
 </dialog>
 
+<dialog id="dprev"><div class="hd"><b class="wm" style="font-size:18px">Vorschau</b><span class="beta">Beta</span><span class="mu sm" style="flex:1">Fehler können auftreten.</span><button id="pcp">HTML kopieren</button><button id="prl">Neu laden</button><button id="pcl" class="pri">Schließen</button></div><iframe id="pf" sandbox="allow-scripts allow-modals allow-pointer-lock" title="Vorschau"></iframe></dialog>
+<dialog id="dapk"><h3 class="wm" style="margin:0;font-size:22px">Android: APK-Datei</h3>
+<div class="stp"><p>Eine APK muss einmal aus deiner fertigen Webseite erzeugt werden. Das geht kostenlos mit <a href="https://www.pwabuilder.com" target="_blank" rel="noopener" style="color:var(--q)">pwabuilder.com</a>.</p></div>
+<div class="stp"><p><b>1.</b> Stelle die Seite mit allen Dateien aus dem Paket online (https).</p><p><b>2.</b> Gib auf pwabuilder.com die Adresse der Seite ein und lade das Android-Paket herunter.</p><p><b>3.</b> Nimm daraus die Datei mit der Endung .apk, nenne sie <b>dream-ai.apk</b> und lade sie neben die index.html hoch.</p><p><b>4.</b> Danach lädt der Knopf „Android: APK" die Datei direkt herunter. Chrome fragt dich dabei nach der Erlaubnis, sie zu installieren.</p></div>
+<button class="pri" id="dax" style="margin-top:14px;width:100%">Verstanden</button></dialog>
+<dialog id="dlim"><h3 class="wm" style="margin:0;font-size:22px">Limit erreicht</h3>
+<p id="limt" style="margin:10px 0 0;color:var(--mu)"></p>
+<div class="limg" id="limg"></div><div class="mu sm" style="margin-top:12px">Die Wahl kann nicht rückgängig gemacht werden.</div></dialog>
 <dialog id="dios"><h3 class="wm" style="margin:0;font-size:22px">Auf dem iPhone installieren</h3>
 <div class="stp"><p><b>1.</b> Öffne Dream AI in <b>Safari</b> und tippe unten auf das Teilen-Symbol.</p>
 <svg viewBox="0 0 240 80"><rect x="6" y="18" width="228" height="48" rx="14" fill="#15123a" stroke="#2f2a6b"/><g fill="none" stroke="#9a95c9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M40 34l-8 8 8 8M76 34l8 8-8 8M154 36h20v13h-20zM164 36v13M200 36h14v12h-14z"/></g><circle cx="120" cy="42" r="17" fill="none" stroke="#5eead4" stroke-width="2"/><g fill="none" stroke="#5eead4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M120 48V30M113 37l7-7 7 7M111 41h-2v13h22V41h-2"/></g></svg></div>
@@ -268,17 +319,19 @@ dialog{max-height:92vh;overflow:auto}
 <button class="pri" id="dix" style="margin-top:14px;width:100%">Verstanden</button></dialog>
 
 <script>
-const APP_VERSION='1.3.1';
-const APP_NOTES='Schönere Einstellungen mit Bereichen';
+const APP_VERSION='1.7.0';
+const APP_NOTES='Bilder im Chat zuverlässiger|Hinweise zur kostenlosen Bildergenerierung|Bild-Link, wenn ein Bild nicht lädt|Hinweis unter dem Eingabefeld';
 const API_KEY='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';
 const $=s=>document.querySelector(s);
-const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
-const DEF={iconbg:'light',model:'openai/gpt-oss-20b',effort:'medium',len:'normal',tone:'friendly',extra:'',speak:'off',voice:'',imgstyle:'normal'};
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v,(k,x)=>k[0]==='_'?undefined:x))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+const DEF={web:'auto',model:'openai/gpt-oss-20b',effort:'medium',len:'normal',tone:'friendly',extra:'',speak:'off',voice:'',imgstyle:'normal'};
 const LEN={short:'Antworte sehr kurz, in hoechstens ein bis drei Saetzen, ausser der Nutzer will mehr.',normal:'Antworte klar und angemessen ausfuehrlich.',long:'Antworte ausfuehrlich und gruendlich, mit Erklaerungen und Beispielen.'};
 const TONE={friendly:'Sei freundlich und warm.',formal:'Sei sachlich und nuechtern.',casual:'Sei locker und umgangssprachlich in der Du-Form.'};
-const TOOLS=()=>{const d=new Date();return 'Es ist jetzt '+d.toLocaleString('de-DE',{weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'})+' (heute '+d.toLocaleDateString('sv-SE')+'). Wenn der Nutzer einen Timer oder einen Kalendereintrag möchte, bestätige kurz und hänge ans Ende deiner Antwort genau eine Zeile an, ohne sie zu erklären: [[TIMER|Sekunden|Name]] oder [[KALENDER|JJJJ-MM-TT|HH:MM oder leer|Titel]]. Beispiele: [[TIMER|600|Nudeln]] und [[KALENDER|2026-12-01|15:30|Zahnarzt]]. Schreibe solche Zeilen sonst nie.'};
+const VISION='meta-llama/llama-4-scout-17b-16e-instruct',VISION2='meta-llama/llama-4-maverick-17b-128e-instruct';
+const VOICE_NO='Über den Sprachmodus kann ich keine Bilder erstellen, das ist für mich einfach zu schwer zu verstehen. Schreib deine Bildidee bitte als Text, dann erstelle ich das Bild.';
+const TOOLS=()=>{const d=new Date();return 'Es ist jetzt '+d.toLocaleString('de-DE',{weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'})+' (heute '+d.toLocaleDateString('sv-SE')+'). Du kannst Bilder erstellen, Timer stellen und Termine eintragen. Sage niemals, dass du das nicht kannst. Dafür hängst du ans Ende deiner Antwort genau eine Zeile an, ohne sie zu erklären: [[BILD|Beschreibung des Bildes auf Englisch]] oder [[TIMER|Sekunden|Name]] oder [[KALENDER|JJJJ-MM-TT|HH:MM oder leer|Titel]]. Beispiele: [[BILD|a dog in the grass]], [[TIMER|600|Nudeln]], [[KALENDER|2026-12-01|15:30|Zahnarzt]]. Schreibe solche Zeilen sonst nie. Der Nutzer kann dir Bilder und Textdateien schicken, die du dir ansiehst. Wenn der Nutzer ein Spiel oder eine kleine Web-App möchte, sage vorher in einem Satz, dass die Spielerstellung gerade in der Beta-Version ist und Fehler auftreten können, und schreibe dann den kompletten Code als eine einzige HTML-Datei (CSS und JavaScript darin, keine externen Dateien) in genau einen Codeblock mit html. Wenn der Nutzer nach einer Webseite oder einem Dienst fragt, nenne die offizielle Hauptadresse als vollständigen Link, zum Beispiel https://poki.com oder https://www.rmv.de, und erfinde keine Unterseiten, die du nicht sicher kennst. Dein Wissen kann veraltet sein, das aktuelle Datum steht oben. Wenn der Nutzer etwas erwähnt, das du nicht kennst oder das nach deinem Wissen noch nicht erschienen ist, aber laut Datum schon erschienen sein könnte, behaupte nie, dass es nicht existiert. Suche im Web, wenn du es kannst, oder sage ehrlich, dass du es nicht sicher weißt. Wenn der Nutzer eine Webadresse nennt, rufe die Seite wirklich auf und beschreibe nur, was du dort tatsächlich findest. Rate nie, worum es auf einer Seite geht, und sage ehrlich, wenn du sie nicht lesen kannst. Wenn der Nutzer einen Text zum Kopieren möchte (Brief, E-Mail, Nachricht, Code), schreibe genau diesen Text in einen eigenen Codeblock mit der Sprache text, damit er ein Kopieren-Feld bekommt. Wenn der Nutzer sagt, dass er ein Kind ist, empfiehl nichts, was nicht altersgerecht ist (zum Beispiel Spiele ab 18), sage das freundlich mit einem passenden Emoji und schlage altersgerechte Alternativen vor. Über bekannte öffentliche Personen darfst du öffentliche Informationen nennen. Bei Privatpersonen suchst du keine privaten Daten wie Adresse, Telefonnummer oder Familienangehörige, und du sagst offen, dass du nicht wissen kannst, wer jemand ist, wenn es nicht öffentlich bekannt ist.'};
 const IMGSTYLE={normal:'',anim:'3D animated film style, vivid colors, soft lighting',cartoon:'classic 2D cartoon style, bold outlines, flat colors',real:'photorealistic, real photo, natural light, highly detailed'};
-const sysPrompt=()=>['Du bist Dream AI, ein hilfreicher Assistent. Antworte auf Deutsch. Nutze Emojis nur selten und nur, wenn sie wirklich zur Stimmung passen.',LEN[cfg.len],TONE[cfg.tone],TOOLS(),cfg.extra].filter(Boolean).join(' ');
+const sysPrompt=()=>['Du bist Dream AI, ein hilfreicher Assistent. Antworte auf Deutsch. Nutze Emojis, wenn sie zur Situation passen, zum Beispiel bei Warnungen, Freude oder Glückwünschen, aber nicht in jedem Satz.',LEN[cfg.len],TONE[cfg.tone],TOOLS(),cfg.extra].filter(Boolean).join(' ');
 const APIURL='https://api.groq.com/openai/v1/chat/completions';
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const esc=t=>t.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
@@ -347,7 +400,7 @@ function welcome(){const w=$('#wl'),c=()=>{w.classList.add('out');setTimeout(()=
 /* App */
 function start(){
   $('#app').hidden=false;$('#un').textContent=user;$('#av').textContent=user[0];
-  chats=LS.get('ai:chats:'+user,[]);cfg=Object.assign({},DEF,LS.get('ai:cfg2:'+user,{}));initCtrls();timers=LS.get('ai:timers:'+user,[]);cal=LS.get('ai:cal:'+user,[]);gal=LS.get('ai:gal:'+user,[]);cur=chats[0]||null;renderAll();renderCal();show('c');
+  chats=LS.get('ai:chats:'+user,[]);cfg=Object.assign({},DEF,LS.get('ai:cfg2:'+user,{}));initCtrls();timers=LS.get('ai:timers:'+user,[]);cal=LS.get('ai:cal:'+user,[]);gal=LS.get('ai:gal:'+user,[]);limitUntil=LS.get('ai:lim:'+user,0);limitLen=LS.get('ai:limlen:'+user,0);if(LS.get('ai:limpend:'+user,0)&&!limitUntil)setTimeout(()=>showLimit(0),500);usage=LS.get('ai:usage:'+user,null);reqLog=LS.get('ai:reqs:'+user,[]);cur=chats[0]||null;renderAll();renderCal();show('c');
 }
 function logout(){
   LS.set('ai:session',null);user=null;document.title='Dream AI';$('#app').hidden=true;$('#app').classList.remove('in');$('#login').hidden=false;
@@ -355,8 +408,9 @@ function logout(){
 }
 const save=()=>LS.set('ai:chats:'+user,chats);
 function newChat(){cur={id:Date.now(),title:'Neuer Chat',msgs:[]};chats.unshift(cur);save();renderAll();show('c');$('#in').focus()}
-function md(s){return s.split(/(```[\s\S]*?(?:```|$))/).map(p=>p.startsWith('```')?'<pre><code>'+esc(p.replace(/^```\w*\n?/,'').replace(/```$/,''))+'</code></pre>':esc(p).replace(/`([^`\n]+)`/g,'<code>$1</code>').replace(/\*\*([^*\n]+)\*\*/g,'<b>$1</b>').replace(/^#{1,3} (.+)$/gm,'<b>$1</b>').replace(/^[-*] /gm,'• ')).join('')}
-function paint(n,m,live){const t=m.c.replace(/\[\[[\s\S]*$/,'');n.innerHTML=t?md(t):(live?'<i class="th">Dream AI denkt nach<b>.</b><b>.</b><b>.</b></i>':'');n.classList.toggle('cur',!!live&&!!t)}
+function md(s){return s.split(/(```[\s\S]*?(?:```|$))/).map(p=>p.startsWith('```')?'<pre><code>'+esc(p.replace(/^```\w*\n?/,'').replace(/```$/,''))+'</code></pre>':esc(p).replace(/`([^`\n]+)`/g,'<code>$1</code>').replace(/\*\*([^*\n]+)\*\*/g,'<b>$1</b>').replace(/^#{1,3} (.+)$/gm,'<b>$1</b>').replace(/^[-*] /gm,'• ').replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>').replace(/(^|[\s(])(https?:\/\/[^\s<)]+)/g,(m,a,u)=>{const t=(u.match(/[.,;:!?]+$/)||[''])[0];u=u.slice(0,u.length-t.length);return a+'<a href="'+u+'" target="_blank" rel="noopener noreferrer">'+u+'</a>'+t})).join('')}
+function addCopy(pre){const c=pre.querySelector('code'),b=document.createElement('button');b.className='cpy';b.textContent='Kopieren';b.onclick=()=>{try{navigator.clipboard.writeText(c.textContent);b.textContent='Kopiert';setTimeout(()=>b.textContent='Kopieren',1500)}catch(e){}};pre.append(b)}
+function paint(n,m,live){const t=m.c.replace(/\[\[[\s\S]*$/,'');n.innerHTML=t?md(t):(live?'<span class="think"><i class="th">Dream AI überlegt gerade</i><span class="dot"></span></span>':'');n.classList.toggle('cur',!!live&&!!t);n.querySelectorAll('pre').forEach(addCopy)}
 function renderList(){
   const q=$('#q').value.trim().toLowerCase(),l=$('#list');l.innerHTML='';
   const hits=chats.filter(c=>!q||c.title.toLowerCase().includes(q)||c.msgs.some(m=>m.c.toLowerCase().includes(q)));
@@ -377,12 +431,16 @@ function renderMsgs(){
   cur.msgs.forEach((m,i)=>{
     const d=document.createElement('div');d.className='m '+m.r+(fresh.delete(m)?' pop':'');
     const b=document.createElement('div');b.className='b';
-    if(m.r==='user')b.textContent=m.c;else{paint(b,m,busy&&i===last);if(m.img){const w=document.createElement('div'),g=document.createElement('img');w.className='gw';w.innerHTML='<span>Bild wird erstellt …</span>';g.alt=m.c;g.onclick=()=>open(m.img);g.onload=()=>w.classList.add('ok');g.onerror=()=>w.replaceWith(Object.assign(document.createElement('div'),{className:'mu sm',textContent:'Das Bild konnte nicht geladen werden. Warte etwa 15 Sekunden und versuche es noch einmal.'}));g.src=m.img;w.append(g);b.append(w)}}
+    if(m.r==='user'){b.textContent=m.c;(m.th||[]).forEach(u=>{const g=document.createElement('img');g.src=u;g.className='uth';b.append(g)});(m.files||[]).forEach(f=>{const c=document.createElement('div');c.className='fchip';c.textContent='Datei: '+f.name;b.append(c)})}else{paint(b,m,busy&&i===last);if(m.img){const w=document.createElement('div'),g=document.createElement('img');w.className='gw';w.innerHTML='<span>Bild wird erstellt …</span>';
+        const bad=()=>{if(w.classList.contains('ok')||w.classList.contains('bad'))return;w.replaceChildren();w.className='gw bad';const l=document.createElement('a');l.href=m.img;l.target='_blank';l.rel='noopener noreferrer';l.textContent='Dieses Bild hat nicht richtig geladen. Klicke hier, um das Bild zu sehen.';w.append(l)};
+        g.alt=m.c;g.onclick=()=>open(m.img);g.onload=()=>{w.classList.add('ok')};g.onerror=bad;setTimeout(bad,60000);g.src=m.img;w.append(g);b.append(w);
+        const cp=document.createElement('div');cp.className='mu sm';cp.style.marginTop='6px';cp.textContent='Kostenlose Bildergenerierung: ein Bild alle 45 Sekunden, nicht immer perfekt.';b.append(cp)}}
     d.append(b);
     if(m.r==='assistant'&&m.c&&!(busy&&i===last)){
       const a=document.createElement('div');a.className='act';
       const c=document.createElement('button');c.textContent='Kopieren';c.onclick=()=>{try{navigator.clipboard.writeText(m.c);c.textContent='Kopiert'}catch(e){}};a.append(c);
       (m.links||[]).forEach(k=>{const q=document.createElement('button');q.textContent=k.l;q.onclick=()=>show(k.v);a.append(q)});
+      const hc=htmlOf(m.c);if(hc){const pv=document.createElement('button');pv.textContent='Vorschau (Beta)';pv.onclick=()=>preview(hc);const cp=document.createElement('button');cp.textContent='HTML kopieren';cp.onclick=()=>{try{navigator.clipboard.writeText(hc);cp.textContent='Kopiert'}catch(e){}};a.append(pv,cp)}
       if(i===last&&!m.tm&&cur.msgs[i-1]&&cur.msgs[i-1].r==='user'&&!/^timer\s+\d/i.test(cur.msgs[i-1].c)){const r=document.createElement('button');r.textContent='Neu generieren';r.onclick=()=>{if(busy)return;cur.msgs.pop();ask()};a.append(r)}
       d.append(a);
     }
@@ -393,16 +451,35 @@ function renderMsgs(){
 function renderAll(){renderList();renderMsgs();renderTimers();setBtn()}
 const setBtn=()=>{$('#bsend').textContent=busy?'Stopp':'Senden'};
 
+function imgReq(t){
+  const N='(?:bild(?:er)?|foto|zeichnung|illustration|logo|poster|wallpaper|hintergrundbild)';
+  if(/^(?:wie|was|warum|wieso|weshalb|wo|wann|welche[rsmn]?|wer)\b/i.test(t))return null;
+  if(/\b(?:beschreib|erkl[äa]r|erz[äa]hl|find|bearbeit|analysier)\w*/i.test(t))return null;
+  if(!new RegExp('\\b'+N+'\\b','i').test(t))return null;
+  const mk=/\b(?:erstell|generier|mach|mal|zeichn|kreier|gestalt|design)\w*/i.test(t)||new RegExp('\\b(?:brauch|möcht|will|hätte|haette|wünsch)\\w*\\b[^.?!]{0,30}\\bein(?:e|en)?\\s+'+N+'\\s+(?:von|vom|mit|zu)\\b','i').test(t);
+  if(!mk)return null;
+  const m=t.match(new RegExp('\\b'+N+'\\s*(?:von|vom|mit|zu|über|:)\\s*(.+)$','i'));
+  let q=m?m[1]:t.replace(new RegExp('\\b(?:bitte|kannst du|könntest du|kannst|mir|uns|ein(?:e|en)?|erstell\\w*|generier\\w*|mach\\w*|mal\\w*|zeichn\\w*|kreier\\w*|'+N+')\\b','gi'),' ');
+  q=q.replace(/[?!.]+$/,'').replace(/\s+(?:erstellen|machen|generieren|zeichnen|malen)$/i,'').replace(/\s+/g,' ').trim();
+  return q.length>1?q:null;
+}
 function makeImg(p){
   if(!cur)newChat();
+  const w=imgNext-Date.now();
+  if(w>0){push({r:'assistant',c:'Ich kann nur ein Bild alle 45 Sekunden erstellen. Bitte warte noch '+Math.ceil(w/1000)+' Sekunden.',tm:1});save();renderAll();return}
+  imgNext=Date.now()+45000;
   const st=IMGSTYLE[cfg.imgstyle]||'',url='https://image.pollinations.ai/prompt/'+encodeURIComponent(st?p+', '+st:p)+'?width=1024&height=1024&model=flux&nologo=true&seed='+Math.floor(Math.random()*1e6);
   gal.unshift({u:url,p});gal.length=Math.min(gal.length,12);LS.set('ai:gal:'+user,gal);
   push({r:'assistant',c:'Bild zu: '+p,img:url,tm:1});save();renderAll();
 }
 function send(text){
-  text=text.trim();if(!text||busy)return;
+  text=text.trim();if((!text&&!pend.length)||busy)return;
+  if(limitUntil>Date.now()){toast('Das Limit ist noch nicht zurückgesetzt. Bitte warte, bis der Countdown abgelaufen ist.');return}
   if(!cur)newChat();
-  push({r:'user',c:text});if(cur.msgs.length===1)cur.title=text.slice(0,40);
+  const um={r:'user',c:text,v:micUsed?1:0};micUsed=false;
+  if(pend.length){const gi=pend.filter(f=>f.full),gf=pend.filter(f=>f.text!=null);if(gi.length){um.th=gi.map(f=>f.th);um._f=gi.map(f=>f.full)}if(gf.length)um.files=gf.map(f=>({name:f.name,text:f.text}))}
+  push(um);pend=[];renderAtt();if(dict)stopDict();
+  if(cur.msgs.length===1)cur.title=(text||(um.files&&um.files[0].name)||'Bild').slice(0,40);
   $('#in').value='';$('#in').style.height='auto';
   const m=text.match(/^timer\s+(\d+)\s*(sek(?:unden?)?|std|stunden?|s|min(?:uten?)?|m|h)?\b\s*(.*)$/i);
   if(m){
@@ -412,19 +489,27 @@ function send(text){
   }
   let im=text.match(/^(?:\/?bild\s*:|male\s+(?:mir\s+)?|zeichne\s+(?:mir\s+)?)\s*(.+)$/i)||text.match(/^(?:(?:bitte|kannst du|könntest du|mir|erstelle?|erstell|generiere?|mach|male|zeichne)\s+)+(?:uns\s+)?(?:ein(?:e|en)?\s+)?(?:bild|foto|zeichnung|illustration)\s+(?:von|vom|mit|zu|über)\s+(.+?)[?.!]*$/i);
   if(im&&/\b(?:beschreib|erkl[äa]r|erz[äa]hl|find)\w*$/i.test(im[1]))im=null;
-  if(im){makeImg(im[1].replace(/\s+(?:erstellen|machen|generieren|zeichnen|malen)$/i,'').trim());return}
+  if(!im&&!(um.th||um.files)){const ip=imgReq(text);if(ip)im=[0,ip]}
+  if(im){if(um.v){push({r:'assistant',c:VOICE_NO,tm:1});save();renderAll();return}makeImg(im[1].replace(/\s+(?:erstellen|machen|generieren|zeichnen|malen)$/i,'').trim());return}
   save();ask();
 }
 async function ask(){
+  if(limitUntil>Date.now()){toast('Das Limit ist noch nicht zurückgesetzt.');return}
   if(!API_KEY||API_KEY.indexOf('HIER')>=0){push({r:'assistant',c:'Im Code ist noch kein API-Schlüssel eingetragen (Konstante API_KEY am Anfang der Datei).',err:1});save();return renderAll()}
-  const hist=[{role:'system',content:sysPrompt()}].concat(cur.msgs.filter(x=>!x.err&&!x.tm).slice(-20).map(x=>({role:x.r,content:x.c})));
-  const rep=push({r:'assistant',c:''});let ab=false;busy=true;ctl=new AbortController();renderAll();
+  const hm0=0;const hm=cur.msgs.filter(x=>!x.err&&!x.tm).slice(-20);let vi=-1;hm.forEach((x,i)=>{if(x._f&&x._f.length)vi=i});const vis=vi>=0&&vi>=hm.length-4;
+  const lu=[...hm].reverse().find(x=>x.r==='user'),tx=lu?lu.c:'',viaMic=!!(lu&&lu.v),web=!vis&&cfg.web!=='off';
+  const mdl=vis?VISION:(web?(/https?:\/\/|\bwww\.|\b[\w-]+\.(?:de|com|net|org|io|eu|at|ch|info)\b/i.test(tx)?'groq/compound':'groq/compound-mini'):cfg.model);
+  const hist=[{role:'system',content:sysPrompt()}].concat(hm.map((x,i)=>toApi(x,vis&&i===vi)));
+  const rep=push({r:'assistant',c:''});let ab=false,lim=null;busy=true;ctl=new AbortController();renderAll();
   const node=$('#msgs').lastChild.firstChild;
   try{
-    const call=extra=>fetch(APIURL,{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json','Authorization':'Bearer '+API_KEY},body:JSON.stringify(Object.assign({model:cfg.model,messages:hist,stream:true},extra))});
-    let res=await call({reasoning_effort:cfg.effort});
-    if(res.status===400)res=await call({});
-    if(!res.ok){let e='';try{e=(await res.json()).error.message}catch(x){}const s=res.status;throw new Error(s===401?'Der API-Schlüssel wird von Groq abgelehnt (ungültig oder gesperrt).':s===429?'Das Limit von Groq ist gerade erreicht. Warte kurz und versuche es nochmal.':(e||'Status '+s))}
+    const call=(extra,mdl)=>fetchLog(APIURL,{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json','Authorization':'Bearer '+API_KEY},body:JSON.stringify(Object.assign({model:mdl||(vis?VISION:cfg.model),messages:hist,stream:true,max_completion_tokens:8000},extra))});
+    let res=await call(vis||web?{}:{reasoning_effort:cfg.effort},mdl);
+    if(res.status===400&&!vis&&!web)res=await call({},mdl);
+    if(vis&&!res.ok)res=await call({},VISION2);
+    if(web&&!res.ok)res=await call({reasoning_effort:cfg.effort},cfg.model);
+    if(res.ok)readLimits(res);
+    if(!res.ok){let e='';try{e=(await res.json()).error.message}catch(x){}const s=res.status;if(s===429){const er=new Error('limit');er.limit=true;er.retry=res.headers.get('retry-after');throw er}throw new Error(s===401?'Der API-Schlüssel wird von Groq abgelehnt (ungültig oder gesperrt).':s===429?'Das Limit von Groq ist gerade erreicht. Warte kurz und versuche es nochmal.':(e||'Status '+s))}
     const rd=res.body.getReader(),dc=new TextDecoder();let buf='';
     for(;;){
       const {done,value}=await rd.read();if(done)break;
@@ -434,8 +519,10 @@ async function ask(){
         try{const c=JSON.parse(l.slice(6)).choices[0].delta.content;if(c){rep.c+=c;paint(node,rep,true);$('#msgs').scrollTop=1e9}}catch(e){}
       }
     }
-  }catch(e){if(e.name==='AbortError')ab=true;else{const t=e.name==='TypeError'?'Keine Verbindung zu Groq. Prüfe Internet, VPN oder Adblocker.':e.message;rep.c+=(rep.c?'\n\n':'')+'Fehler bei der Anfrage: '+t;rep.err=1}}
-  if(!ab)acts(rep);
+  }catch(e){if(e.name==='AbortError')ab=true;else if(e.limit)lim=e;else{const t=e.name==='TypeError'?'Keine Verbindung zu Groq. Prüfe Internet, VPN oder Adblocker.':e.message;rep.c+=(rep.c?'\n\n':'')+'Fehler bei der Anfrage: '+t;rep.err=1}}
+  if(lim){cur.msgs.pop();const u=cur.msgs[cur.msgs.length-1];if(u&&u.r==='user'&&!u.th&&!u.files){cur.msgs.pop();$('#in').value=u.c}busy=false;ctl=null;save();renderAll();LS.set('ai:limpend:'+user,1);showLimit(lim.retry);return}
+  let ni=0;if(!ab)ni=acts(rep,viaMic);
+  if(!ab&&!ni&&!viaMic&&rep.c&&/kann[^.]{0,40}(?:keine?|nicht)[^.]{0,40}(?:bild|foto|grafik|zeichn)/i.test(rep.c)){const ip=imgReq(tx);if(ip){rep.c='Ich erstelle dein Bild.';makeImg(ip)}}
   if(!rep.c){if(ab)cur.msgs.pop();else{rep.c='Die AI hat keine Antwort geliefert. Versuche es bitte noch einmal.';rep.err=1}}
   busy=false;ctl=null;save();renderAll();afterAnswer(rep,ab);
 }
@@ -469,6 +556,9 @@ function renderTimers(){
 function tick(){
   if(!user)return;
   const dn=new Date();$('#clk').textContent=dn.toLocaleTimeString('de-DE');$('#cld').textContent=dn.toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  const lr=limitUntil-Date.now();
+  if(lr>0){$('#lim').textContent=limitLen+(limitLen===1?' Minute':' Minuten')+' Limit ist angetreten.\nLimit wird zurückgesetzt in '+Math.floor(lr/6e4)+':'+String(Math.floor(lr%6e4/1e3)).padStart(2,'0');$('#lim').hidden=vw!=='c';setLock(true)}
+  else{if(limitUntil){limitUntil=0;LS.set('ai:lim:'+user,0);toast('Das Limit ist wieder frei. Du kannst weiterschreiben.')}$('#lim').hidden=true;setLock(false)}
   cal.forEach(e=>{if(e.t&&!e.z){const due=new Date(e.d+'T'+e.t).getTime();if(due<=dn.getTime()){e.z=1;saveC();if(dn.getTime()-due<6e5){beep();toast('Termin: '+e.t+' Uhr, '+e.n,true)}}}});
   const fin=timers.filter(t=>!t.done&&!t.paused&&t.end<=Date.now());
   if(fin.length){fin.forEach(t=>t.done=true);saveT();finished(fin);renderTimers();return}
@@ -491,50 +581,76 @@ $('#toast').onclick=()=>{$('#toast').style.display='none'};
 $('#tgo').onclick=()=>{const s=(+$('#th').value||0)*3600+(+$('#tmi').value||0)*60+(+$('#ts').value||0);if(s>0){addTimer(s,$('#tn').value.trim());['#tn','#th','#tmi','#ts'].forEach(k=>$(k).value='')}};
 
 /* Sprache */
-const SR=window.SpeechRecognition||window.webkitSpeechRecognition,TTS=window.speechSynthesis;let rec=null,voiceOn=false,spk=0;
-const setMic=()=>$('#bmic').classList.toggle('rec',voiceOn);
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition,TTS=window.speechSynthesis;let rec=null,dict=false,base='',spk=0,micUsed=false,imgNext=0;
 const deV=()=>TTS?TTS.getVoices().filter(v=>/^de/i.test(v.lang)):[];
 function fillVoices(){const s=$('#cv');s.innerHTML='<option value="">Automatisch (beste deutsche Stimme)</option>';deV().forEach(x=>{const o=document.createElement('option');o.value=x.name;o.textContent=x.name;s.append(o)});s.value=cfg.voice||''}
 if(TTS)TTS.onvoiceschanged=fillVoices;
 const pickVoice=()=>{const v=deV();return v.find(x=>x.name===cfg.voice)||v.find(x=>/natural|neural|online/i.test(x.name))||v.find(x=>/google/i.test(x.name))||v[0]||null};
 function stopSpeak(){spk++;if(TTS)TTS.cancel()}
-function speak(t,done){
-  if(!TTS){done&&done();return}
-  stopSpeak();const id=spk,v=pickVoice();
+function speak(t){
+  if(!TTS)return;stopSpeak();const v=pickVoice();
   const txt=t.replace(/```[\s\S]*?```/g,' Hier ist ein Codeblock. ').replace(/https?:\/\/\S+/g,' Link ').replace(/[`*#]/g,'');
-  const parts=txt.match(/[^.!?\n]+[.!?\n]*/g)||[txt];
-  parts.forEach((p,i)=>{const u=new SpeechSynthesisUtterance(p);u.lang='de-DE';if(v)u.voice=v;if(i===parts.length-1)u.onend=u.onerror=()=>{if(id===spk&&done)done()};TTS.speak(u)});
+  (txt.match(/[^.!?\n]+[.!?\n]*/g)||[txt]).forEach(p=>{const u=new SpeechSynthesisUtterance(p);u.lang='de-DE';if(v)u.voice=v;TTS.speak(u)});
 }
-function listen(){
-  if(!SR||!voiceOn||busy)return;
-  rec=new SR();rec.lang='de-DE';rec.interimResults=true;
-  rec.onresult=e=>{let t='';for(const r of e.results)t+=r[0].transcript;$('#in').value=t;if(e.results[e.results.length-1].isFinal&&t.trim()){rec.onend=null;send(t);if(!busy&&voiceOn)setTimeout(listen,300)}};
-  rec.onerror=e=>{if(/not-allowed|service-not-allowed/.test(e.error)){voiceOn=false;rec.onend=null;setMic();toast('Das Mikrofon ist nicht erlaubt. Erlaube es über das Schloss-Symbol in der Adressleiste.')}};
-  rec.onend=()=>{if(voiceOn&&!busy)setTimeout(listen,300)};
+function afterAnswer(rep,ab){if(!ab&&rep.c&&!rep.err&&cfg.speak==='on')speak(rep.c)}
+const setMic=()=>{$('#bmic').classList.toggle('rec',dict);$('#bok').hidden=!dict};
+function startDict(){
+  if(!dict)return;base=$('#in').value.trim();
+  rec=new SR();rec.lang='de-DE';rec.continuous=true;rec.interimResults=true;
+  rec.onresult=e=>{micUsed=true;let t='';for(const r of e.results)t+=r[0].transcript;$('#in').value=(base?base+' ':'')+t.trim();$('#in').dispatchEvent(new Event('input'))};
+  rec.onerror=e=>{if(/not-allowed|service-not-allowed/.test(e.error)){dict=false;rec.onend=null;setMic();toast('Das Mikrofon ist nicht erlaubt. Erlaube es über das Schloss-Symbol in der Adressleiste.')}};
+  rec.onend=()=>{if(dict)setTimeout(startDict,200)};
   try{rec.start()}catch(e){}
 }
-function afterAnswer(rep,ab){
-  if(!ab&&rep.c&&!rep.err&&(voiceOn||cfg.speak==='on'))speak(rep.c,()=>{if(voiceOn)listen()});
-  else if(voiceOn)listen();
-}
-$('#bmic').onclick=()=>{
-  if(!SR){toast('Spracheingabe geht in Chrome, Edge und Safari, aber nicht in Firefox.');return}
-  voiceOn=!voiceOn;setMic();
-  if(voiceOn)listen();else{try{rec&&(rec.onend=null,rec.abort())}catch(e){}stopSpeak()}
-};
+function stopDict(){dict=false;try{rec&&(rec.onend=null,rec.stop())}catch(e){}setMic();$('#in').focus()}
+$('#bmic').onclick=()=>{if(!SR){toast('Diktieren geht in Chrome, Edge und Safari, aber nicht in Firefox.');return}if(dict)stopDict();else{dict=true;setMic();startDict()}};
+$('#bok').onclick=stopDict;
 $('#cv').onchange=()=>{cfg.voice=$('#cv').value;saveCfg()};
+
+/* Anhänge, Spiele-Vorschau */
+let pend=[];
+const htmlOf=t=>{const m=/```html[^\n]*\n([\s\S]*?)```/i.exec(t||'');return m?m[1].trim():''};
+let pcode='';
+function preview(c){pcode=c;$('#pf').srcdoc=c;$('#dprev').showModal()}
+$('#pcl').onclick=()=>$('#dprev').close();$('#prl').onclick=()=>{$('#pf').srcdoc='';setTimeout(()=>$('#pf').srcdoc=pcode,50)};
+$('#pcp').onclick=()=>{try{navigator.clipboard.writeText(pcode);$('#pcp').textContent='Kopiert';setTimeout(()=>$('#pcp').textContent='HTML kopieren',1500)}catch(e){}};
+function toApi(x,withImg){
+  let t=x.c||'';(x.files||[]).forEach(f=>{t+='\n\n[Datei: '+f.name+']\n'+f.text});
+  if(x.r==='user'&&withImg&&x._f&&x._f.length)return{role:'user',content:[{type:'text',text:t||'Beschreibe das Bild.'}].concat(x._f.map(u=>({type:'image_url',image_url:{url:u}})))};
+  if(x.r==='user'&&x.th&&x.th.length)t+='\n[Es waren '+x.th.length+' Bild(er) angehängt]';
+  return{role:x.r,content:t};
+}
+function renderAtt(){
+  const a=$('#att');a.innerHTML='';
+  pend.forEach((f,i)=>{const c=document.createElement('div');c.className='achip';if(f.th){const g=document.createElement('img');g.src=f.th;c.append(g)}const n=document.createElement('span');n.textContent=f.name;const x=document.createElement('button');x.textContent='×';x.onclick=()=>{pend.splice(i,1);renderAtt()};c.append(n,x);a.append(c)});
+}
+const rdf=f=>new Promise((ok,no)=>{const r=new FileReader();r.onload=()=>ok(r.result);r.onerror=no;f.type.startsWith('image/')?r.readAsDataURL(f):r.readAsText(f)});
+const shrink=(url,max,q)=>new Promise(ok=>{const im=new Image();im.onload=()=>{const k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',q))};im.onerror=()=>ok(null);im.src=url});
+$('#bplus').onclick=()=>$('#fi').click();
+$('#fi').onchange=async e=>{
+  for(const f of e.target.files){
+    if(pend.length>=5){toast('Maximal 5 Anhänge pro Nachricht.');break}
+    try{
+      if(f.type.startsWith('image/')){const u=await rdf(f),big=await shrink(u,1280,.85),th=await shrink(u,160,.7);if(!big){toast('Das Bild konnte nicht gelesen werden.');continue}pend.push({name:f.name,full:big,th})}
+      else if(f.size<=2e6&&(f.type.startsWith('text/')||/\.(txt|md|csv|json|html?|css|js|ts|py|xml|log|java|c|cpp|h|ya?ml|sql|sh|ini|php|rb|go|rs|kt|swift)$/i.test(f.name)))pend.push({name:f.name,text:(await rdf(f)).slice(0,20000)});
+      else toast('Diese Datei kann ich noch nicht lesen: '+f.name+'. Bilder und Textdateien gehen.');
+    }catch(x){toast('Die Datei konnte nicht gelesen werden.')}
+  }
+  e.target.value='';renderAtt();
+};
 $('#bimg').onclick=()=>{const t=$('#in').value.trim();if(!t){toast('Schreib zuerst ins Feld, was auf dem Bild zu sehen sein soll.');return}send('bild: '+t)};
 
 /* Ansichten, Kalender, Aktionen der AI */
-let cal=[],gal=[],vw='c';const VT={c:'',t:'Timer',k:'Kalender',b:'Bilder'};
+let cal=[],gal=[],vw='c';const VT={c:'',t:'Timer',k:'Kalender',b:'Bilder',g:'Geplant'};
 function show(v){
   vw=v;$('#msgs').hidden=$('.inp').hidden=v!=='c';
-  [['t','#vt'],['k','#vk'],['b','#vb']].forEach(([k,q])=>$(q).hidden=v!==k);
+  [['t','#vt'],['k','#vk'],['b','#vb'],['g','#vg']].forEach(([k,q])=>$(q).hidden=v!==k);
   document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
   $('#ttl').textContent=v==='c'?(cur?cur.title:'Neuer Chat'):VT[v];
   if(v==='k'&&!$('#cd').value)$('#cd').value=new Date().toLocaleDateString('sv-SE');
   if(v==='b')renderGal();
   if(v==='c'){const m=$('#msgs');m.scrollTop=m.scrollHeight}
+  $('#att').hidden=v!=='c';$('#disc').hidden=v!=='c';
   $('#side').classList.remove('open');
 }
 document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>show(b.dataset.v));
@@ -561,21 +677,23 @@ function renderGal(){
   gal.forEach(x=>{const i=document.createElement('img');i.alt=x.p;i.title=x.p;i.loading='lazy';i.src=x.u;i.onclick=()=>open(x.u);w.append(i)});g.append(w);
 }
 $('#bgen').onclick=()=>{const p=$('#bp').value.trim();if(!p){toast('Beschreibe zuerst dein Bild.');return}$('#bp').value='';makeImg(p);show('c')};
-function acts(rep){
-  const re=/\[\[(TIMER|KALENDER)\|([^\]]*)\]\]/g;let m;const links=[],say=[];
+function acts(rep,nomg){
+  const re=/\[\[(TIMER|KALENDER|BILD)\|([^\]]*)\]\]/g;let m;const links=[],say=[],imgs=[];
   while((m=re.exec(rep.c))){
     const a=m[2].split('|').map(x=>x.trim());
-    if(m[1]==='TIMER'&&+a[0]>0){addTimer(+a[0],a[1]||'');links.push({v:'t',l:'Timer öffnen'});say.push('Timer gestartet: '+fmt(+a[0])+(a[1]?' ('+a[1]+')':''))}
+    if(m[1]==='BILD'){const d=m[2].trim();if(d)imgs.push(d)}
+    else if(m[1]==='TIMER'&&+a[0]>0){addTimer(+a[0],a[1]||'');links.push({v:'t',l:'Timer öffnen'});say.push('Timer gestartet: '+fmt(+a[0])+(a[1]?' ('+a[1]+')':''))}
     else if(m[1]==='KALENDER'&&/^\d{4}-\d\d-\d\d$/.test(a[0])){const t=/^\d{1,2}:\d\d$/.test(a[1]||'')?a[1].padStart(5,'0'):'';addCal(a[0],t,a[2]||'Termin');links.push({v:'k',l:'Kalender öffnen'});say.push('Im Kalender eingetragen: '+a[0].split('-').reverse().join('.')+(t?', '+t+' Uhr':'')+' ('+(a[2]||'Termin')+')')}
   }
   rep.c=rep.c.replace(/\[\[[\s\S]*?(?:\]\]|$)/g,'').trim();
+  if(imgs.length&&!rep.c&&!links.length)rep.c='Ich erstelle dein Bild.';
   if(links.length){if(!rep.c)rep.c=say.join('\n');rep.links=links.filter((k,i)=>links.findIndex(z=>z.v===k.v)===i)}
+  if(nomg&&imgs.length)rep.c=VOICE_NO;else imgs.slice(0,1).forEach(d=>makeImg(d));
+  return nomg?0:imgs.length;
 }
 
 /* App-Installation */
 const isApp=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;let dip=null;
-function applyIcon(){const k=cfg.iconbg==='dark'?'schwarz':'weiss';$('#mf').href='manifest-'+k+'.webmanifest';$('#ati').href='icons/apple-touch-icon-'+k+'.png'}
-$('#sicon').addEventListener('click',()=>setTimeout(applyIcon,0));
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e});
 addEventListener('appinstalled',()=>{dip=null;toast('Dream AI wurde installiert.')});
 $('#bapk').onclick=async()=>{
@@ -583,12 +701,56 @@ $('#bapk').onclick=async()=>{
   if(dip){dip.prompt();try{await dip.userChoice}catch(e){}dip=null;return}
   toast(location.protocol==='file:'?'Die Installation geht nur, wenn die Seite online gehostet ist (https).':'Öffne die Seite in Chrome auf Android, tippe auf die drei Punkte und dann auf „App installieren“.');
 };
+const APK_URL='dream-ai.apk';
+$('#bapk2').onclick=async()=>{
+  try{const r=await fetch(APK_URL,{method:'HEAD',cache:'no-store'});if(r.ok){const a=document.createElement('a');a.href=APK_URL;a.download='dream-ai.apk';document.body.append(a);a.click();a.remove();return}}catch(e){}
+  $('#dlg').close();$('#dapk').showModal();
+};
+$('#dax').onclick=()=>$('#dapk').close();
 $('#bios').onclick=()=>{$('#dlg').close();$('#dios').showModal()};$('#dix').onclick=()=>$('#dios').close();
 if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
 
+/* Limit und Nutzung (Groq) */
+let limitUntil=0,limitLen=0,usage=null,reqLog=[],locked=false,phOrig='';
+function fetchLog(u,o){const n=Date.now();reqLog=reqLog.filter(t=>n-t<864e5).slice(-2000);reqLog.push(n);LS.set('ai:reqs:'+user,reqLog);return fetch(u,o)}
+function readLimits(res){
+  const g=k=>res.headers.get(k),lt=+g('x-ratelimit-limit-tokens'),rt=g('x-ratelimit-remaining-tokens'),lq=+g('x-ratelimit-limit-requests'),rq=g('x-ratelimit-remaining-requests');
+  if((lt&&rt!=null)||(lq&&rq!=null)){usage={at:Date.now(),lt,rt:+rt,lq,rq:+rq};LS.set('ai:usage:'+user,usage)}
+}
+function renderUsage(){
+  const n=Date.now(),r1=reqLog.filter(t=>n-t<6e4).length,r24=reqLog.filter(t=>n-t<864e5).length;
+  const bar=(l,u,m)=>{const p=Math.max(0,Math.min(100,Math.round(100*u/m)));return '<div style="margin-top:12px"><div style="display:flex;justify-content:space-between;gap:8px"><span class="mu sm">'+l+'</span><b>'+p+' % verbraucht</b></div><div class="um'+(p>=85?' hi':'')+'"><i style="width:'+p+'%"></i></div></div>'};
+  let h='<div class="mu sm">Anbieter: <b style="color:var(--tx)">Groq</b></div>';
+  if(usage&&usage.lt)h+=bar('Tokens pro Minute',usage.lt-usage.rt,usage.lt);
+  if(usage&&usage.lq)h+=bar('Anfragen pro Tag',usage.lq-usage.rq,usage.lq);
+  if(usage&&(usage.lt||usage.lq))h+='<div class="mu sm" style="margin-top:8px">Stand: '+new Date(usage.at).toLocaleTimeString('de-DE')+'. Die Tokens setzen sich jede Minute zurück.</div>';
+  else h+='<div class="mu sm" style="margin-top:10px">Groq hat noch keine Prozentzahlen geliefert. Sie erscheinen nach der nächsten Antwort, wenn dein Browser sie lesen darf.</div>';
+  h+='<div class="mu sm" style="margin-top:12px">Eigene Zählung: '+r1+' Anfragen in der letzten Minute, '+r24+' in den letzten 24 Stunden.</div><div class="mu sm" style="margin-top:6px">Bei 100 % fragt dich die App, wie lange du warten möchtest.</div>';
+  $('#usg').innerHTML=h;
+}
+function setLock(l){
+  if(l===locked)return;locked=l;
+  if(l){if(dict)stopDict();phOrig=$('#in').placeholder}
+  ['#in','#bsend','#bmic','#bplus','#bimg','#bgen','#bp'].forEach(q=>$(q).disabled=l);
+  $('#in').placeholder=l?'Limit angetreten. Schreiben ist erst nach dem Countdown wieder möglich.':phOrig;
+}
+function showLimit(retry){
+  if(limitUntil>Date.now()){toast('Das Limit ist noch nicht zurückgesetzt.');return}
+  $('#limt').textContent='Du hast das Limit von Groq erreicht.'+(+retry>0?' Groq meldet, dass es in etwa '+Math.ceil(+retry)+' Sekunden wieder frei sein soll.':'')+' Wenn du zu früh weiterschreibst, ist es gleich wieder voll. Wie lange möchtest du warten? Die Wahl kann nicht rückgängig gemacht werden. In dieser Zeit kannst du nichts schreiben, auch nicht in einem neuen Chat.';
+  $('#dlim').showModal();
+}
+[1,2,4,6,8,10].forEach(m=>{const b=document.createElement('button');b.textContent=m+(m===1?' Minute':' Minuten');b.onclick=()=>{limitUntil=Date.now()+m*6e4;limitLen=m;LS.set('ai:lim:'+user,limitUntil);LS.set('ai:limlen:'+user,m);LS.set('ai:limpend:'+user,0);$('#dlim').close();tick()};$('#limg').append(b)});
+$('#dlim').addEventListener('cancel',e=>e.preventDefault());
+
 /* Bedienung */
 $('#bout').onclick=logout;$('#bnew').onclick=()=>{if(!busy)newChat()};$('#q').oninput=renderList;
-$('#bmenu').onclick=()=>$('#side').classList.toggle('open');
+const isM=()=>matchMedia('(max-width:760px)').matches;
+if(LS.get('ai:fold',0))document.body.classList.add('fold');
+$('#bmenu').onclick=()=>{if(isM())$('#side').classList.toggle('open');else{document.body.classList.remove('fold');LS.set('ai:fold',0)}};
+$('#bfold').onclick=()=>{if(isM())$('#side').classList.remove('open');else{document.body.classList.add('fold');LS.set('ai:fold',1)}};
+document.querySelector('main').addEventListener('click',()=>{if(isM())$('#side').classList.remove('open')});
+function setFly(){const r=$('.stage').getBoundingClientRect();if(!r.height)return;document.documentElement.style.setProperty('--fly',Math.max(50,Math.min(380,r.bottom-124-12))+'px')}
+addEventListener('resize',setFly);setFly();
 $('#bsend').onclick=()=>busy?ctl&&ctl.abort():send($('#in').value);
 $('#in').onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send($('#in').value)}};
 $('#in').oninput=e=>{e.target.style.height='auto';e.target.style.height=Math.min(e.target.scrollHeight,160)+'px'};
@@ -601,16 +763,16 @@ function initCtrls(){
   mkSeg($('#eff'),[['low','Leicht'],['medium','Mittel'],['high','Hoch']],'effort');
   mkSeg($('#slen'),[['short','Kurz'],['normal','Normal'],['long','Ausführlich']],'len');
   mkSeg($('#stone'),[['friendly','Freundlich'],['formal','Sachlich'],['casual','Locker']],'tone');
-  mkSeg($('#sicon'),[['light','Weiß'],['dark','Schwarz']],'iconbg');applyIcon();mkSeg($('#sty'),[['normal','Normal'],['anim','Animiert'],['cartoon','Zeichentrick'],['real','Echt']],'imgstyle');mkSeg($('#sspk'),[['off','Aus'],['on','An']],'speak');fillVoices();$('#cm').value=cfg.model;$('#cs').value=cfg.extra||'';
+  mkSeg($('#sweb'),[['auto','An'],['off','Aus']],'web');mkSeg($('#sty'),[['normal','Normal'],['anim','Animiert'],['cartoon','Zeichentrick'],['real','Echt']],'imgstyle');mkSeg($('#sspk'),[['off','Aus'],['on','An']],'speak');fillVoices();$('#cm').value=cfg.model;$('#cs').value=cfg.extra||'';
 }
 $('#cm').onchange=()=>{cfg.model=$('#cm').value;saveCfg()};
 $('#cs').oninput=()=>{cfg.extra=$('#cs').value;saveCfg()};
-$('#bset').onclick=()=>{$('#ver').textContent='Version '+APP_VERSION;$('#dlg').showModal()};
+$('#bset').onclick=()=>{renderUsage();$('#ver').textContent='Version '+APP_VERSION;$('#dlg').showModal()};
 $('#cx').onclick=()=>$('#dlg').close();
 $('#cup').onclick=()=>checkUpdate(true);
 $('#cdel').onclick=()=>{
   if(!confirm('Dein Konto und alle Chats werden unwiderruflich gelöscht. Fortfahren?'))return;
-  const u=LS.get('ai:users',{});delete u[user];LS.set('ai:users',u);['chats','cfg2','timers','seen','cal','gal'].forEach(k=>LS.del('ai:'+k+':'+user));$('#dlg').close();logout();
+  const u=LS.get('ai:users',{});delete u[user];LS.set('ai:users',u);['chats','cfg2','timers','seen','cal','gal','lim','limlen','limpend','usage','reqs'].forEach(k=>LS.del('ai:'+k+':'+user));$('#dlg').close();logout();
 };
 
 /* Updates */
