@@ -183,6 +183,8 @@ dialog{max-height:92vh;overflow:auto}
 button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed}
 #disc{text-align:center;font-size:12px;color:var(--mu);padding:2px 16px 10px}
 .gw.bad{animation:none;aspect-ratio:auto;background:rgba(251,191,36,.08);border:1px solid var(--am);padding:14px;display:block}.gw.bad a{color:var(--am);text-decoration:underline}
+.lg2{width:46px;height:46px;display:block;flex:none;filter:drop-shadow(0 0 8px rgba(59,130,246,.5))}.lg2 svg{width:100%;height:100%}
+.srcs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:12px;padding-top:8px;border-top:1px solid var(--bd)}.b .srcs a{font-size:12px;border:1px solid var(--bd);border-radius:999px;padding:2px 10px;color:var(--q);text-decoration:none;max-width:230px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-break:normal}
 </style>
 </head>
 <body>
@@ -254,14 +256,15 @@ button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed}
 </div></section>
 <section id="vb" class="view" hidden><div class="vin">
 <div class="mu sm">Stil der Bilder</div><div class="seg" id="sty"></div>
-<div class="mu sm" style="border:1px solid var(--bd);border-radius:10px;padding:8px 12px">Dies ist eine kostenlose Bildergenerierung. Sie kann deine Wünsche nicht immer perfekt umsetzen. Es kann ein Bild alle 45 Sekunden erstellt werden.</div>
+<div class="mu sm" style="border:1px solid var(--bd);border-radius:10px;padding:8px 12px">Hier erstellt ein eigener Assistent nur Bilder. Dies ist eine kostenlose Bildergenerierung. Sie kann deine Wünsche nicht immer perfekt umsetzen. Es kann ein Bild alle 45 Sekunden erstellt werden.</div>
 <textarea id="bp" rows="3" placeholder="Beschreibe dein Bild, zum Beispiel: ein Hund am Strand"></textarea>
 <button class="pri" id="bgen">Bild erstellen</button>
+<div id="bres"></div>
 <div class="mu sm" style="margin-top:6px">Deine letzten Bilder</div><div id="gal"></div>
 </div></section>
 <div id="lim" hidden></div>
 <div id="att"></div>
-<div class="inp"><button id="bplus" title="Datei oder Bild hinzufügen" aria-label="Datei oder Bild hinzufügen">+</button><input type="file" id="fi" hidden multiple accept="image/*,text/*,.md,.csv,.json,.html,.htm,.css,.js,.ts,.py,.xml,.log,.java,.c,.cpp,.h,.yml,.yaml,.sql,.sh,.ini,.php,.rb,.go,.rs,.kt,.swift"><textarea id="in" rows="1" placeholder="Schreib etwas, zum Beispiel: Erstell mir ein Bild von einem Hund"></textarea><button id="bmic" title="Mit der AI sprechen" aria-label="Mit der AI sprechen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button><button id="bok" hidden title="Diktat beenden">OK</button><button id="bimg" title="Bild aus dem Text erstellen">Bild</button><button class="pri" id="bsend">Senden</button></div>
+<div class="inp"><button id="bplus" title="Datei oder Bild hinzufügen" aria-label="Datei oder Bild hinzufügen">+</button><input type="file" id="fi" hidden multiple accept="image/*,text/*,.md,.csv,.json,.html,.htm,.css,.js,.ts,.py,.xml,.log,.java,.c,.cpp,.h,.yml,.yaml,.sql,.sh,.ini,.php,.rb,.go,.rs,.kt,.swift"><textarea id="in" rows="1" placeholder="Schreib eine Nachricht …"></textarea><button id="bmic" title="Mit der AI sprechen" aria-label="Mit der AI sprechen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button><button id="bok" hidden title="Diktat beenden">OK</button><button class="pri" id="bsend">Senden</button></div>
 <div id="disc">Dream AI ist eine KI und kann Fehler machen.</div>
 </main>
 </div>
@@ -290,7 +293,7 @@ button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed}
 <div class="row"><button id="bapk">Android: installieren</button><button id="bapk2">Android: APK</button></div>
 <div class="row" style="margin-top:6px"><button id="bios">iPhone: Anleitung</button></div>
 <label>Websuche: aktuelle Infos und Webseiten lesen</label><div class="seg" id="sweb"></div>
-<div class="mu sm" style="margin-top:8px">Mit Websuche kennt die AI aktuelle Dinge und kann Webadressen wirklich aufrufen.</div></section>
+<div class="mu sm" style="margin-top:8px">Mit Websuche sucht die AI selbst im Internet, wenn sie etwas nicht sicher weiß, und zeigt unter der Antwort die Quellen.</div></section>
 <section class="sc"><h4><svg class="si" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Nutzung</h4><div id="usg" style="margin-top:12px"></div></section>
 <section class="sc"><h4><svg class="si" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Konto und Version</h4>
 <div class="row" style="margin-top:12px;align-items:center"><button id="cup">Nach Updates suchen</button></div>
@@ -301,10 +304,18 @@ button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed}
 </dialog>
 
 <dialog id="dprev"><div class="hd"><b class="wm" style="font-size:18px">Vorschau</b><span class="beta">Beta</span><span class="mu sm" style="flex:1">Fehler können auftreten.</span><button id="pcp">HTML kopieren</button><button id="prl">Neu laden</button><button id="pcl" class="pri">Schließen</button></div><iframe id="pf" sandbox="allow-scripts allow-modals allow-pointer-lock" title="Vorschau"></iframe></dialog>
-<dialog id="dapk"><h3 class="wm" style="margin:0;font-size:22px">Android: APK-Datei</h3>
-<div class="stp"><p>Eine APK muss einmal aus deiner fertigen Webseite erzeugt werden. Das geht kostenlos mit <a href="https://www.pwabuilder.com" target="_blank" rel="noopener" style="color:var(--q)">pwabuilder.com</a>.</p></div>
-<div class="stp"><p><b>1.</b> Stelle die Seite mit allen Dateien aus dem Paket online (https).</p><p><b>2.</b> Gib auf pwabuilder.com die Adresse der Seite ein und lade das Android-Paket herunter.</p><p><b>3.</b> Nimm daraus die Datei mit der Endung .apk, nenne sie <b>dream-ai.apk</b> und lade sie neben die index.html hoch.</p><p><b>4.</b> Danach lädt der Knopf „Android: APK" die Datei direkt herunter. Chrome fragt dich dabei nach der Erlaubnis, sie zu installieren.</p></div>
-<button class="pri" id="dax" style="margin-top:14px;width:100%">Verstanden</button></dialog>
+<dialog id="dapk">
+<div style="display:flex;align-items:center;gap:12px"><span class="lg2" id="apkic"></span><div><h3 class="wm" style="margin:0;font-size:22px">Dream AI für Android</h3><div class="mu sm">APK-Datei zum Installieren</div></div></div>
+<div id="apkok" hidden>
+<div class="plr" style="margin-top:14px"><span>Dateigröße: <b id="apksz"></b></span></div>
+<button class="pri" id="apkdl" style="width:100%;margin-top:12px;padding:12px">Herunterladen</button>
+<div class="stp"><p><b>1.</b> Öffne die heruntergeladene Datei.</p><p><b>2.</b> Erlaube die Installation aus dieser Quelle, wenn Android danach fragt.</p><p><b>3.</b> Tippe auf „Installieren" und danach auf „Öffnen".</p></div>
+</div>
+<div id="apkno" hidden>
+<div class="stp"><p>Die APK-Datei liegt noch nicht auf deiner Webseite. Sie muss einmal aus der fertigen Seite erzeugt werden, kostenlos mit <a href="https://www.pwabuilder.com" target="_blank" rel="noopener" style="color:var(--q)">pwabuilder.com</a>.</p></div>
+<div class="stp"><p><b>1.</b> Stelle die Seite mit allen Dateien aus dem Paket online (https).</p><p><b>2.</b> Gib auf pwabuilder.com die Adresse der Seite ein und lade das Android-Paket herunter.</p><p><b>3.</b> Nimm daraus die Datei mit der Endung .apk, nenne sie <b>dream-ai.apk</b> und lade sie neben die index.html hoch.</p><p><b>4.</b> Danach zeigt dieses Fenster die Größe und den Knopf „Herunterladen".</p></div>
+</div>
+<button class="pri" id="dax" style="margin-top:14px;width:100%">Schließen</button></dialog>
 <dialog id="dlim"><h3 class="wm" style="margin:0;font-size:22px">Limit erreicht</h3>
 <p id="limt" style="margin:10px 0 0;color:var(--mu)"></p>
 <div class="limg" id="limg"></div><div class="mu sm" style="margin-top:12px">Die Wahl kann nicht rückgängig gemacht werden.</div></dialog>
@@ -319,19 +330,19 @@ button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed}
 <button class="pri" id="dix" style="margin-top:14px;width:100%">Verstanden</button></dialog>
 
 <script>
-const APP_VERSION='1.7.0';
-const APP_NOTES='Bilder im Chat zuverlässiger|Hinweise zur kostenlosen Bildergenerierung|Bild-Link, wenn ein Bild nicht lädt|Hinweis unter dem Eingabefeld';
+const APP_VERSION='1.8.0';
+const APP_NOTES='Websuche mit Quellen (neu und repariert)|Bilder nur noch im Bereich „Bilder“|Bilderkennung mit neuem Modell';
 const API_KEY='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';
 const $=s=>document.querySelector(s);
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v,(k,x)=>k[0]==='_'?undefined:x))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
 const DEF={web:'auto',model:'openai/gpt-oss-20b',effort:'medium',len:'normal',tone:'friendly',extra:'',speak:'off',voice:'',imgstyle:'normal'};
 const LEN={short:'Antworte sehr kurz, in hoechstens ein bis drei Saetzen, ausser der Nutzer will mehr.',normal:'Antworte klar und angemessen ausfuehrlich.',long:'Antworte ausfuehrlich und gruendlich, mit Erklaerungen und Beispielen.'};
 const TONE={friendly:'Sei freundlich und warm.',formal:'Sei sachlich und nuechtern.',casual:'Sei locker und umgangssprachlich in der Du-Form.'};
-const VISION='meta-llama/llama-4-scout-17b-16e-instruct',VISION2='meta-llama/llama-4-maverick-17b-128e-instruct';
-const VOICE_NO='Über den Sprachmodus kann ich keine Bilder erstellen, das ist für mich einfach zu schwer zu verstehen. Schreib deine Bildidee bitte als Text, dann erstelle ich das Bild.';
-const TOOLS=()=>{const d=new Date();return 'Es ist jetzt '+d.toLocaleString('de-DE',{weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'})+' (heute '+d.toLocaleDateString('sv-SE')+'). Du kannst Bilder erstellen, Timer stellen und Termine eintragen. Sage niemals, dass du das nicht kannst. Dafür hängst du ans Ende deiner Antwort genau eine Zeile an, ohne sie zu erklären: [[BILD|Beschreibung des Bildes auf Englisch]] oder [[TIMER|Sekunden|Name]] oder [[KALENDER|JJJJ-MM-TT|HH:MM oder leer|Titel]]. Beispiele: [[BILD|a dog in the grass]], [[TIMER|600|Nudeln]], [[KALENDER|2026-12-01|15:30|Zahnarzt]]. Schreibe solche Zeilen sonst nie. Der Nutzer kann dir Bilder und Textdateien schicken, die du dir ansiehst. Wenn der Nutzer ein Spiel oder eine kleine Web-App möchte, sage vorher in einem Satz, dass die Spielerstellung gerade in der Beta-Version ist und Fehler auftreten können, und schreibe dann den kompletten Code als eine einzige HTML-Datei (CSS und JavaScript darin, keine externen Dateien) in genau einen Codeblock mit html. Wenn der Nutzer nach einer Webseite oder einem Dienst fragt, nenne die offizielle Hauptadresse als vollständigen Link, zum Beispiel https://poki.com oder https://www.rmv.de, und erfinde keine Unterseiten, die du nicht sicher kennst. Dein Wissen kann veraltet sein, das aktuelle Datum steht oben. Wenn der Nutzer etwas erwähnt, das du nicht kennst oder das nach deinem Wissen noch nicht erschienen ist, aber laut Datum schon erschienen sein könnte, behaupte nie, dass es nicht existiert. Suche im Web, wenn du es kannst, oder sage ehrlich, dass du es nicht sicher weißt. Wenn der Nutzer eine Webadresse nennt, rufe die Seite wirklich auf und beschreibe nur, was du dort tatsächlich findest. Rate nie, worum es auf einer Seite geht, und sage ehrlich, wenn du sie nicht lesen kannst. Wenn der Nutzer einen Text zum Kopieren möchte (Brief, E-Mail, Nachricht, Code), schreibe genau diesen Text in einen eigenen Codeblock mit der Sprache text, damit er ein Kopieren-Feld bekommt. Wenn der Nutzer sagt, dass er ein Kind ist, empfiehl nichts, was nicht altersgerecht ist (zum Beispiel Spiele ab 18), sage das freundlich mit einem passenden Emoji und schlage altersgerechte Alternativen vor. Über bekannte öffentliche Personen darfst du öffentliche Informationen nennen. Bei Privatpersonen suchst du keine privaten Daten wie Adresse, Telefonnummer oder Familienangehörige, und du sagst offen, dass du nicht wissen kannst, wer jemand ist, wenn es nicht öffentlich bekannt ist.'};
+const VISION='qwen/qwen3.8-27b',VISION2='qwen/qwen3.8-27b';
+const IMG_NO='Bilder erstelle ich im Chat nicht mehr, weil es hier nicht so gut funktioniert hat. Bitte geh in der Seitenleiste auf „Bilder“ und erstelle sie dort. Das ist ein eigener Assistent, der nur Bilder erstellt.';
+const TOOLS=(mode)=>{const d=new Date(),W=['Du hast gerade keinen Zugriff auf das Internet. Wenn etwas nach deinem Wissen noch nicht erschienen ist, aber laut Datum schon erschienen sein könnte, sage ehrlich, dass du es nicht sicher weißt, und behaupte nie, dass es nicht existiert.','Wenn du für eine gute Antwort aktuelle Informationen brauchst oder etwas nicht sicher weißt, zum Beispiel bei Spielen, Releases, Preisen, Nachrichten, Wahrscheinlichkeiten, Personen, Produkten oder Webseiten, antworte ausschließlich mit [[WEB|kurze Suchanfrage]] und nichts sonst. Behaupte nie, dass etwas nicht existiert oder du nichts darüber weißt, ohne vorher so zu suchen.','Du hast Zugriff auf die Websuche. Nutze sie und antworte nur mit dem, was du gefunden hast. Erfinde nichts. Schreibe keine Quellenliste in den Text, die Quellen werden automatisch angezeigt.'][mode||0];return 'Heute ist '+d.toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+' ('+d.toLocaleDateString('sv-SE')+'), es ist '+d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+' Uhr. Das ist das echte aktuelle Datum, auch wenn dein Wissen älter ist. Dinge, die bis heute geplant waren, können inzwischen erschienen sein. '+W+' Du kannst Timer stellen und Termine eintragen. Dafür hängst du ans Ende deiner Antwort genau eine Zeile an, ohne sie zu erklären: [[TIMER|Sekunden|Name]] oder [[KALENDER|JJJJ-MM-TT|HH:MM oder leer|Titel]]. Beispiele: [[TIMER|600|Nudeln]] und [[KALENDER|2026-12-01|15:30|Zahnarzt]]. Schreibe solche Zeilen sonst nie. Du erstellst im Chat keine Bilder. Wenn der Nutzer ein Bild möchte, sage freundlich, dass das im Chat nicht so gut funktioniert hat, und dass er in der Seitenleiste auf Bilder gehen soll. Der Nutzer kann dir Bilder und Textdateien schicken, die du dir ansiehst. Wenn der Nutzer ein Spiel oder eine kleine Web-App möchte, sage vorher in einem Satz, dass die Spielerstellung gerade in der Beta-Version ist und Fehler auftreten können, und schreibe dann den kompletten Code als eine einzige HTML-Datei (CSS und JavaScript darin, keine externen Dateien) in genau einen Codeblock mit html. Wenn der Nutzer nach einer Webseite oder einem Dienst fragt, nenne die offizielle Hauptadresse als vollständigen Link, zum Beispiel https://poki.com oder https://www.rmv.de, und erfinde keine Unterseiten, die du nicht sicher kennst. Wenn der Nutzer eine Webadresse nennt, beschreibe nur, was du dort tatsächlich findest, und rate nie. Wenn der Nutzer einen Text zum Kopieren möchte (Brief, E-Mail, Nachricht, Code), schreibe genau diesen Text in einen eigenen Codeblock mit der Sprache text, damit er ein Kopieren-Feld bekommt. Wenn der Nutzer sagt, dass er ein Kind ist, empfiehl nichts, was nicht altersgerecht ist (zum Beispiel Spiele ab 18), sage das freundlich mit einem passenden Emoji und schlage altersgerechte Alternativen vor. Über bekannte öffentliche Personen darfst du öffentliche Informationen nennen. Bei Privatpersonen suchst du keine privaten Daten wie Adresse, Telefonnummer oder Familienangehörige, und du sagst offen, dass du nicht wissen kannst, wer jemand ist, wenn es nicht öffentlich bekannt ist.'};
 const IMGSTYLE={normal:'',anim:'3D animated film style, vivid colors, soft lighting',cartoon:'classic 2D cartoon style, bold outlines, flat colors',real:'photorealistic, real photo, natural light, highly detailed'};
-const sysPrompt=()=>['Du bist Dream AI, ein hilfreicher Assistent. Antworte auf Deutsch. Nutze Emojis, wenn sie zur Situation passen, zum Beispiel bei Warnungen, Freude oder Glückwünschen, aber nicht in jedem Satz.',LEN[cfg.len],TONE[cfg.tone],TOOLS(),cfg.extra].filter(Boolean).join(' ');
+const sysPrompt=(md)=>['Du bist Dream AI, ein hilfreicher Assistent. Antworte auf Deutsch. Nutze Emojis, wenn sie zur Situation passen, zum Beispiel bei Warnungen, Freude oder Glückwünschen, aber nicht in jedem Satz.',LEN[cfg.len],TONE[cfg.tone],TOOLS(md),cfg.extra].filter(Boolean).join(' ');
 const APIURL='https://api.groq.com/openai/v1/chat/completions';
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const esc=t=>t.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
@@ -363,7 +374,7 @@ addEventListener('pointermove',e=>{mx=e.clientX/W-.5;my=e.clientY/H-.5});
 addEventListener('resize',()=>{if(run)size()});
 
 /* Login */
-$('#mn').innerHTML=moon('a');$('#st').innerHTML=star('a');$('#sm').innerHTML=logo('b');$('#slg').innerHTML=logo('s');
+$('#mn').innerHTML=moon('a');$('#st').innerHTML=star('a');$('#sm').innerHTML=logo('b');$('#slg').innerHTML=logo('s');$('#apkic').innerHTML=logo('a');
 'Dream AI'.split('').forEach((c,i)=>{const s=document.createElement('span');s.textContent=c===' '?'\u00a0':c;s.style.animationDelay=(5+i*.09)+'s';$('#lh').append(s)});
 async function hash(p,salt){
   try{const b=new TextEncoder().encode(salt+p);const h=await crypto.subtle.digest('SHA-256',b);return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('')}
@@ -410,7 +421,7 @@ const save=()=>LS.set('ai:chats:'+user,chats);
 function newChat(){cur={id:Date.now(),title:'Neuer Chat',msgs:[]};chats.unshift(cur);save();renderAll();show('c');$('#in').focus()}
 function md(s){return s.split(/(```[\s\S]*?(?:```|$))/).map(p=>p.startsWith('```')?'<pre><code>'+esc(p.replace(/^```\w*\n?/,'').replace(/```$/,''))+'</code></pre>':esc(p).replace(/`([^`\n]+)`/g,'<code>$1</code>').replace(/\*\*([^*\n]+)\*\*/g,'<b>$1</b>').replace(/^#{1,3} (.+)$/gm,'<b>$1</b>').replace(/^[-*] /gm,'• ').replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>').replace(/(^|[\s(])(https?:\/\/[^\s<)]+)/g,(m,a,u)=>{const t=(u.match(/[.,;:!?]+$/)||[''])[0];u=u.slice(0,u.length-t.length);return a+'<a href="'+u+'" target="_blank" rel="noopener noreferrer">'+u+'</a>'+t})).join('')}
 function addCopy(pre){const c=pre.querySelector('code'),b=document.createElement('button');b.className='cpy';b.textContent='Kopieren';b.onclick=()=>{try{navigator.clipboard.writeText(c.textContent);b.textContent='Kopiert';setTimeout(()=>b.textContent='Kopieren',1500)}catch(e){}};pre.append(b)}
-function paint(n,m,live){const t=m.c.replace(/\[\[[\s\S]*$/,'');n.innerHTML=t?md(t):(live?'<span class="think"><i class="th">Dream AI überlegt gerade</i><span class="dot"></span></span>':'');n.classList.toggle('cur',!!live&&!!t);n.querySelectorAll('pre').forEach(addCopy)}
+function paint(n,m,live){const t=m.c.replace(/<think>[\s\S]*?(?:<\/think>|$)/g,'').replace(/\[\[[\s\S]*$/,'').trimStart();n.innerHTML=t?md(t):(live?'<span class="think"><i class="th">'+(m.web?'Web wird durchsucht':'Dream AI überlegt gerade')+'</i><span class="dot"></span></span>':'');n.classList.toggle('cur',!!live&&!!t);n.querySelectorAll('pre').forEach(addCopy)}
 function renderList(){
   const q=$('#q').value.trim().toLowerCase(),l=$('#list');l.innerHTML='';
   const hits=chats.filter(c=>!q||c.title.toLowerCase().includes(q)||c.msgs.some(m=>m.c.toLowerCase().includes(q)));
@@ -431,7 +442,8 @@ function renderMsgs(){
   cur.msgs.forEach((m,i)=>{
     const d=document.createElement('div');d.className='m '+m.r+(fresh.delete(m)?' pop':'');
     const b=document.createElement('div');b.className='b';
-    if(m.r==='user'){b.textContent=m.c;(m.th||[]).forEach(u=>{const g=document.createElement('img');g.src=u;g.className='uth';b.append(g)});(m.files||[]).forEach(f=>{const c=document.createElement('div');c.className='fchip';c.textContent='Datei: '+f.name;b.append(c)})}else{paint(b,m,busy&&i===last);if(m.img){const w=document.createElement('div'),g=document.createElement('img');w.className='gw';w.innerHTML='<span>Bild wird erstellt …</span>';
+    if(m.r==='user'){b.textContent=m.c;(m.th||[]).forEach(u=>{const g=document.createElement('img');g.src=u;g.className='uth';b.append(g)});(m.files||[]).forEach(f=>{const c=document.createElement('div');c.className='fchip';c.textContent='Datei: '+f.name;b.append(c)})}else{paint(b,m,busy&&i===last);
+        if(m.src&&m.src.length&&!(busy&&i===last)){const sd=document.createElement('div');sd.className='srcs';sd.innerHTML='<span class="mu sm">Quellen:</span>';m.src.forEach(q=>{const l=document.createElement('a');l.href=q.u;l.target='_blank';l.rel='noopener noreferrer';l.textContent=q.t;l.title=q.u;sd.append(l)});b.append(sd)}if(m.img){const w=document.createElement('div'),g=document.createElement('img');w.className='gw';w.innerHTML='<span>Bild wird erstellt …</span>';
         const bad=()=>{if(w.classList.contains('ok')||w.classList.contains('bad'))return;w.replaceChildren();w.className='gw bad';const l=document.createElement('a');l.href=m.img;l.target='_blank';l.rel='noopener noreferrer';l.textContent='Dieses Bild hat nicht richtig geladen. Klicke hier, um das Bild zu sehen.';w.append(l)};
         g.alt=m.c;g.onclick=()=>open(m.img);g.onload=()=>{w.classList.add('ok')};g.onerror=bad;setTimeout(bad,60000);g.src=m.img;w.append(g);b.append(w);
         const cp=document.createElement('div');cp.className='mu sm';cp.style.marginTop='6px';cp.textContent='Kostenlose Bildergenerierung: ein Bild alle 45 Sekunden, nicht immer perfekt.';b.append(cp)}}
@@ -463,14 +475,21 @@ function imgReq(t){
   q=q.replace(/[?!.]+$/,'').replace(/\s+(?:erstellen|machen|generieren|zeichnen|malen)$/i,'').replace(/\s+/g,' ').trim();
   return q.length>1?q:null;
 }
-function makeImg(p){
-  if(!cur)newChat();
+function imgBox(url,alt){
+  const w=document.createElement('div'),g=document.createElement('img');w.className='gw';w.innerHTML='<span>Bild wird erstellt …</span>';
+  const bad=()=>{if(w.classList.contains('ok')||w.classList.contains('bad'))return;w.replaceChildren();w.className='gw bad';const l=document.createElement('a');l.href=url;l.target='_blank';l.rel='noopener noreferrer';l.textContent='Dieses Bild hat nicht richtig geladen. Klicke hier, um das Bild zu sehen.';w.append(l)};
+  g.alt=alt;g.onclick=()=>open(url);g.onload=()=>w.classList.add('ok');g.onerror=bad;setTimeout(bad,60000);g.src=url;w.append(g);return w;
+}
+let bresUrl='';
+function genImg(p){
   const w=imgNext-Date.now();
-  if(w>0){push({r:'assistant',c:'Ich kann nur ein Bild alle 45 Sekunden erstellen. Bitte warte noch '+Math.ceil(w/1000)+' Sekunden.',tm:1});save();renderAll();return}
+  if(w>0){toast('Ich kann nur ein Bild alle 45 Sekunden erstellen. Bitte warte noch '+Math.ceil(w/1000)+' Sekunden.');return false}
   imgNext=Date.now()+45000;
   const st=IMGSTYLE[cfg.imgstyle]||'',url='https://image.pollinations.ai/prompt/'+encodeURIComponent(st?p+', '+st:p)+'?width=1024&height=1024&model=flux&nologo=true&seed='+Math.floor(Math.random()*1e6);
   gal.unshift({u:url,p});gal.length=Math.min(gal.length,12);LS.set('ai:gal:'+user,gal);
-  push({r:'assistant',c:'Bild zu: '+p,img:url,tm:1});save();renderAll();
+  bresUrl=url;const r=$('#bres');r.innerHTML='';r.append(imgBox(url,p));
+  const c=document.createElement('div');c.className='mu sm';c.style.marginTop='6px';c.textContent=p;r.append(c);
+  renderGal();return true;
 }
 function send(text){
   text=text.trim();if((!text&&!pend.length)||busy)return;
@@ -490,39 +509,77 @@ function send(text){
   let im=text.match(/^(?:\/?bild\s*:|male\s+(?:mir\s+)?|zeichne\s+(?:mir\s+)?)\s*(.+)$/i)||text.match(/^(?:(?:bitte|kannst du|könntest du|mir|erstelle?|erstell|generiere?|mach|male|zeichne)\s+)+(?:uns\s+)?(?:ein(?:e|en)?\s+)?(?:bild|foto|zeichnung|illustration)\s+(?:von|vom|mit|zu|über)\s+(.+?)[?.!]*$/i);
   if(im&&/\b(?:beschreib|erkl[äa]r|erz[äa]hl|find)\w*$/i.test(im[1]))im=null;
   if(!im&&!(um.th||um.files)){const ip=imgReq(text);if(ip)im=[0,ip]}
-  if(im){if(um.v){push({r:'assistant',c:VOICE_NO,tm:1});save();renderAll();return}makeImg(im[1].replace(/\s+(?:erstellen|machen|generieren|zeichnen|malen)$/i,'').trim());return}
+  if(im){push({r:'assistant',c:IMG_NO,tm:1,links:[{v:'b',l:'Bilder öffnen'}]});save();renderAll();return}
   save();ask();
+}
+const WEBQ=/https?:\/\/|\bwww\.|\b[\w-]+\.(?:de|com|net|org|io|eu|at|ch|info)\b|\b(?:aktuell\w*|neueste\w*|news|nachrichten|wetter|wann\s+(?:kommt|erscheint)|wie\s+hoch\s+ist\s+(?:die\s+)?(?:chance|wahrscheinlichkeit)|chance\s+(?:auf|f[üu]r|den|die|das)|im\s+(?:internet|web)|google|suche\s+(?:im|nach|mal)|202[5-9])\b|\bist\s+[^.?!]{0,40}\b(?:drau[ßs]en|erschienen|released|ver[öo]ffentlicht)\b/i;
+const HDR=()=>({'Content-Type':'application/json','Authorization':'Bearer '+API_KEY});
+async function chk(res){
+  if(res.ok){readLimits(res);return}
+  let e='';try{e=(await res.json()).error.message}catch(x){}const st=res.status;
+  if(st===429){const er=new Error('limit');er.limit=true;er.retry=res.headers.get('retry-after');throw er}
+  throw new Error(st===401?'Der API-Schlüssel wird von Groq abgelehnt (ungültig oder gesperrt).':(e||'Status '+st));
+}
+function srcOf(ex){
+  const out=[],seen=new Set();
+  const add=(u,t)=>{try{const x=new URL(u);if(!/^https?:$/.test(x.protocol)||seen.has(x.href))return;seen.add(x.href);out.push({u:x.href,t:String(t||x.hostname).replace(/^www\./,'').slice(0,60)})}catch(e){}};
+  const walk=o=>{if(!o||typeof o!=='object')return;if(Array.isArray(o)){o.forEach(walk);return}if(typeof o.url==='string')add(o.url,o.title);for(const v of Object.values(o)){if(v&&typeof v==='object')walk(v);else if(typeof v==='string'&&v[0]==='{'){try{walk(JSON.parse(v))}catch(e){}}}};
+  walk(ex);
+  if(!out.length)(JSON.stringify(ex||'').match(/https?:\/\/[^\s"\\<>)\]]+/g)||[]).forEach(u=>add(u.replace(/[.,;:!?]+$/,'')));
+  return out.slice(0,8);
+}
+async function typeOut(rep,node,text){
+  rep.web=0;const step=Math.max(2,Math.ceil(text.length/150));
+  for(let i=0;i<text.length;i+=step){if(ctl.signal.aborted)return;rep.c=text.slice(0,i+step);paint(node,rep,true);$('#msgs').scrollTop=1e9;await new Promise(r=>setTimeout(r,18))}
+  rep.c=text;
+}
+async function streamPass(rep,hist,node,vis){
+  const mdl=vis?VISION:cfg.model;
+  const call=extra=>fetchLog(APIURL,{method:'POST',signal:ctl.signal,headers:HDR(),body:JSON.stringify(Object.assign({model:mdl,messages:hist,stream:true,max_completion_tokens:8000},extra))});
+  let res=await call(vis?{}:{reasoning_effort:cfg.effort});
+  if(res.status===400&&!vis)res=await call({});
+  if(vis&&!res.ok)res=await call({});
+  await chk(res);
+  const rd=res.body.getReader(),dc=new TextDecoder();let buf='';
+  for(;;){
+    const {done,value}=await rd.read();if(done)break;
+    buf+=dc.decode(value,{stream:true});const ls=buf.split('\n');buf=ls.pop();
+    for(const l of ls){
+      if(!l.startsWith('data: ')||l==='data: [DONE]')continue;
+      try{const c=JSON.parse(l.slice(6)).choices[0].delta.content;if(c){rep.c+=c;paint(node,rep,true);$('#msgs').scrollTop=1e9}}catch(e){}
+    }
+  }
+}
+async function webPass(rep,hist,node){
+  rep.web=1;rep.c='';paint(node,rep,true);
+  const model=/gpt-oss/.test(cfg.model)?cfg.model:'openai/gpt-oss-20b';
+  const res=await fetchLog(APIURL,{method:'POST',signal:ctl.signal,headers:HDR(),body:JSON.stringify({model,messages:hist,stream:false,max_completion_tokens:4000,reasoning_effort:'low',tool_choice:'required',tools:[{type:'browser_search'}]})});
+  await chk(res);
+  const j=await res.json(),m=(j.choices&&j.choices[0]&&j.choices[0].message)||{};
+  const text=String(m.content||'').replace(/【[^】]*】/g,'').replace(/ +([.,;:!?])/g,'$1').trim();
+  if(!text)throw new Error('Die Websuche hat keine Antwort geliefert.');
+  rep.src=srcOf(m.executed_tools);
+  await typeOut(rep,node,text);
 }
 async function ask(){
   if(limitUntil>Date.now()){toast('Das Limit ist noch nicht zurückgesetzt.');return}
   if(!API_KEY||API_KEY.indexOf('HIER')>=0){push({r:'assistant',c:'Im Code ist noch kein API-Schlüssel eingetragen (Konstante API_KEY am Anfang der Datei).',err:1});save();return renderAll()}
-  const hm0=0;const hm=cur.msgs.filter(x=>!x.err&&!x.tm).slice(-20);let vi=-1;hm.forEach((x,i)=>{if(x._f&&x._f.length)vi=i});const vis=vi>=0&&vi>=hm.length-4;
-  const lu=[...hm].reverse().find(x=>x.r==='user'),tx=lu?lu.c:'',viaMic=!!(lu&&lu.v),web=!vis&&cfg.web!=='off';
-  const mdl=vis?VISION:(web?(/https?:\/\/|\bwww\.|\b[\w-]+\.(?:de|com|net|org|io|eu|at|ch|info)\b/i.test(tx)?'groq/compound':'groq/compound-mini'):cfg.model);
-  const hist=[{role:'system',content:sysPrompt()}].concat(hm.map((x,i)=>toApi(x,vis&&i===vi)));
-  const rep=push({r:'assistant',c:''});let ab=false,lim=null;busy=true;ctl=new AbortController();renderAll();
+  const hm=cur.msgs.filter(x=>!x.err&&!x.tm).slice(-20);let vi=-1;hm.forEach((x,i)=>{if(x._f&&x._f.length)vi=i});const vis=vi>=0&&vi>=hm.length-4;
+  const lu=[...hm].reverse().find(x=>x.r==='user'),tx=lu?lu.c:'',canWeb=!vis&&cfg.web!=='off';
+  const mk=md=>[{role:'system',content:sysPrompt(md)}].concat(hm.map((x,i)=>toApi(x,vis&&i===vi)));
+  const rep=push({r:'assistant',c:''});let ab=false,lim=null;busy=true;ctl=new AbortController();
+  const direct=canWeb&&WEBQ.test(tx);if(direct)rep.web=1;renderAll();
   const node=$('#msgs').lastChild.firstChild;
+  const viaWeb=async()=>{try{await webPass(rep,mk(2),node)}catch(e){if(e.limit||e.name==='AbortError')throw e;rep.web=0;rep.src=null;rep.c='Die Websuche hat gerade nicht geklappt, deshalb antworte ich ohne aktuelle Infos.\n\n';paint(node,rep,true);await streamPass(rep,mk(0),node,false)}};
   try{
-    const call=(extra,mdl)=>fetchLog(APIURL,{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json','Authorization':'Bearer '+API_KEY},body:JSON.stringify(Object.assign({model:mdl||(vis?VISION:cfg.model),messages:hist,stream:true,max_completion_tokens:8000},extra))});
-    let res=await call(vis||web?{}:{reasoning_effort:cfg.effort},mdl);
-    if(res.status===400&&!vis&&!web)res=await call({},mdl);
-    if(vis&&!res.ok)res=await call({},VISION2);
-    if(web&&!res.ok)res=await call({reasoning_effort:cfg.effort},cfg.model);
-    if(res.ok)readLimits(res);
-    if(!res.ok){let e='';try{e=(await res.json()).error.message}catch(x){}const s=res.status;if(s===429){const er=new Error('limit');er.limit=true;er.retry=res.headers.get('retry-after');throw er}throw new Error(s===401?'Der API-Schlüssel wird von Groq abgelehnt (ungültig oder gesperrt).':s===429?'Das Limit von Groq ist gerade erreicht. Warte kurz und versuche es nochmal.':(e||'Status '+s))}
-    const rd=res.body.getReader(),dc=new TextDecoder();let buf='';
-    for(;;){
-      const {done,value}=await rd.read();if(done)break;
-      buf+=dc.decode(value,{stream:true});const ls=buf.split('\n');buf=ls.pop();
-      for(const l of ls){
-        if(!l.startsWith('data: ')||l==='data: [DONE]')continue;
-        try{const c=JSON.parse(l.slice(6)).choices[0].delta.content;if(c){rep.c+=c;paint(node,rep,true);$('#msgs').scrollTop=1e9}}catch(e){}
-      }
+    if(direct)await viaWeb();
+    else{
+      await streamPass(rep,mk(canWeb?1:0),node,vis);
+      if(canWeb&&/\[\[WEB\|[^\]]*\]\]/.test(rep.c)&&rep.c.replace(/\[\[[\s\S]*?\]\]/g,'').trim().length<40){rep.c='';await viaWeb()}
     }
   }catch(e){if(e.name==='AbortError')ab=true;else if(e.limit)lim=e;else{const t=e.name==='TypeError'?'Keine Verbindung zu Groq. Prüfe Internet, VPN oder Adblocker.':e.message;rep.c+=(rep.c?'\n\n':'')+'Fehler bei der Anfrage: '+t;rep.err=1}}
   if(lim){cur.msgs.pop();const u=cur.msgs[cur.msgs.length-1];if(u&&u.r==='user'&&!u.th&&!u.files){cur.msgs.pop();$('#in').value=u.c}busy=false;ctl=null;save();renderAll();LS.set('ai:limpend:'+user,1);showLimit(lim.retry);return}
-  let ni=0;if(!ab)ni=acts(rep,viaMic);
-  if(!ab&&!ni&&!viaMic&&rep.c&&/kann[^.]{0,40}(?:keine?|nicht)[^.]{0,40}(?:bild|foto|grafik|zeichn)/i.test(rep.c)){const ip=imgReq(tx);if(ip){rep.c='Ich erstelle dein Bild.';makeImg(ip)}}
+  rep.web=0;if(!ab)acts(rep);
   if(!rep.c){if(ab)cur.msgs.pop();else{rep.c='Die AI hat keine Antwort geliefert. Versuche es bitte noch einmal.';rep.err=1}}
   busy=false;ctl=null;save();renderAll();afterAnswer(rep,ab);
 }
@@ -638,7 +695,7 @@ $('#fi').onchange=async e=>{
   }
   e.target.value='';renderAtt();
 };
-$('#bimg').onclick=()=>{const t=$('#in').value.trim();if(!t){toast('Schreib zuerst ins Feld, was auf dem Bild zu sehen sein soll.');return}send('bild: '+t)};
+
 
 /* Ansichten, Kalender, Aktionen der AI */
 let cal=[],gal=[],vw='c';const VT={c:'',t:'Timer',k:'Kalender',b:'Bilder',g:'Geplant'};
@@ -671,25 +728,22 @@ function renderCal(){
 }
 $('#cgo').onclick=()=>{const d=$('#cd').value,n=$('#cn').value.trim();if(!d||!n){toast('Bitte Datum und Titel eintragen.');return}addCal(d,$('#ct').value,n);$('#cn').value='';$('#ct').value=''};
 function renderGal(){
-  const g=$('#gal');g.innerHTML='';
-  if(!gal.length){g.innerHTML='<div class="mu sm">Hier erscheinen deine Bilder.</div>';return}
+  const g=$('#gal');g.innerHTML='';const L=gal.filter(x=>x.u!==bresUrl);
+  if(!L.length){g.innerHTML='<div class="mu sm">'+(gal.length?'Dein neuestes Bild steht oben.':'Hier erscheinen deine Bilder.')+'</div>';return}
   const w=document.createElement('div');w.className='galg';
-  gal.forEach(x=>{const i=document.createElement('img');i.alt=x.p;i.title=x.p;i.loading='lazy';i.src=x.u;i.onclick=()=>open(x.u);w.append(i)});g.append(w);
+  L.forEach(x=>{const i=document.createElement('img');i.alt=x.p;i.title=x.p;i.loading='lazy';i.src=x.u;i.onclick=()=>open(x.u);w.append(i)});g.append(w);
 }
-$('#bgen').onclick=()=>{const p=$('#bp').value.trim();if(!p){toast('Beschreibe zuerst dein Bild.');return}$('#bp').value='';makeImg(p);show('c')};
+$('#bgen').onclick=()=>{const p=$('#bp').value.trim();if(!p){toast('Beschreibe zuerst dein Bild.');return}if(genImg(p))$('#bp').value=''};
 function acts(rep,nomg){
-  const re=/\[\[(TIMER|KALENDER|BILD)\|([^\]]*)\]\]/g;let m;const links=[],say=[],imgs=[];
+  const re=/\[\[(TIMER|KALENDER)\|([^\]]*)\]\]/g;let m;const links=[],say=[],imgs=[];
   while((m=re.exec(rep.c))){
     const a=m[2].split('|').map(x=>x.trim());
-    if(m[1]==='BILD'){const d=m[2].trim();if(d)imgs.push(d)}
-    else if(m[1]==='TIMER'&&+a[0]>0){addTimer(+a[0],a[1]||'');links.push({v:'t',l:'Timer öffnen'});say.push('Timer gestartet: '+fmt(+a[0])+(a[1]?' ('+a[1]+')':''))}
+    if(m[1]==='TIMER'&&+a[0]>0){addTimer(+a[0],a[1]||'');links.push({v:'t',l:'Timer öffnen'});say.push('Timer gestartet: '+fmt(+a[0])+(a[1]?' ('+a[1]+')':''))}
     else if(m[1]==='KALENDER'&&/^\d{4}-\d\d-\d\d$/.test(a[0])){const t=/^\d{1,2}:\d\d$/.test(a[1]||'')?a[1].padStart(5,'0'):'';addCal(a[0],t,a[2]||'Termin');links.push({v:'k',l:'Kalender öffnen'});say.push('Im Kalender eingetragen: '+a[0].split('-').reverse().join('.')+(t?', '+t+' Uhr':'')+' ('+(a[2]||'Termin')+')')}
   }
   rep.c=rep.c.replace(/\[\[[\s\S]*?(?:\]\]|$)/g,'').trim();
-  if(imgs.length&&!rep.c&&!links.length)rep.c='Ich erstelle dein Bild.';
   if(links.length){if(!rep.c)rep.c=say.join('\n');rep.links=links.filter((k,i)=>links.findIndex(z=>z.v===k.v)===i)}
-  if(nomg&&imgs.length)rep.c=VOICE_NO;else imgs.slice(0,1).forEach(d=>makeImg(d));
-  return nomg?0:imgs.length;
+  return 0;
 }
 
 /* App-Installation */
@@ -702,10 +756,15 @@ $('#bapk').onclick=async()=>{
   toast(location.protocol==='file:'?'Die Installation geht nur, wenn die Seite online gehostet ist (https).':'Öffne die Seite in Chrome auf Android, tippe auf die drei Punkte und dann auf „App installieren“.');
 };
 const APK_URL='dream-ai.apk';
+const fmtMB=n=>(n/1048576).toFixed(1).replace('.',',')+' MB';
 $('#bapk2').onclick=async()=>{
-  try{const r=await fetch(APK_URL,{method:'HEAD',cache:'no-store'});if(r.ok){const a=document.createElement('a');a.href=APK_URL;a.download='dream-ai.apk';document.body.append(a);a.click();a.remove();return}}catch(e){}
+  let ok=false,size=0;
+  try{const r=await fetch(APK_URL,{method:'HEAD',cache:'no-store'});if(r.ok){ok=true;size=+r.headers.get('content-length')||0}}catch(e){}
+  $('#apkok').hidden=!ok;$('#apkno').hidden=ok;
+  if(ok)$('#apksz').textContent=size?fmtMB(size):'wird beim Download angezeigt';
   $('#dlg').close();$('#dapk').showModal();
 };
+$('#apkdl').onclick=()=>{const a=document.createElement('a');a.href=APK_URL;a.download='dream-ai.apk';document.body.append(a);a.click();a.remove();toast('Download gestartet. Öffne danach die Datei, um die App zu installieren.')};
 $('#dax').onclick=()=>$('#dapk').close();
 $('#bios').onclick=()=>{$('#dlg').close();$('#dios').showModal()};$('#dix').onclick=()=>$('#dios').close();
 if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -731,7 +790,7 @@ function renderUsage(){
 function setLock(l){
   if(l===locked)return;locked=l;
   if(l){if(dict)stopDict();phOrig=$('#in').placeholder}
-  ['#in','#bsend','#bmic','#bplus','#bimg','#bgen','#bp'].forEach(q=>$(q).disabled=l);
+  ['#in','#bsend','#bmic','#bplus','#bgen','#bp'].forEach(q=>$(q).disabled=l);
   $('#in').placeholder=l?'Limit angetreten. Schreiben ist erst nach dem Countdown wieder möglich.':phOrig;
 }
 function showLimit(retry){
