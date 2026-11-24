@@ -210,6 +210,12 @@ button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed}
 .vpill button,.vround{border:0;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;padding:0;flex:none;color:#fff;background:none}
 .vround{width:48px;height:48px;background:#222226;border:1px solid #2f2f34}.vround.white{background:#f6f6f6;color:#111;border-color:#f6f6f6}.vround.off{background:#3a1f26;color:#ff8a9a;border-color:#5a2a35}
 .vpill svg,.vround svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#gate{position:fixed;inset:0;z-index:90;background:radial-gradient(70vmax 70vmax at 50% 30%,#1b1346,#05030f 70%);display:grid;place-items:center;padding:24px}
+.gcard{max-width:440px;text-align:center;display:grid;gap:14px;justify-items:center}.gcard svg{width:68px;height:68px;stroke:var(--q);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}#gmo svg{fill:none;filter:drop-shadow(0 0 14px #3b82f6)}
+.asec{border:1px solid var(--bd);border-radius:14px;padding:14px;background:rgba(255,255,255,.03)}.asec h4{margin:0 0 10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--q);font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.stat{border:1px solid var(--bd);border-radius:10px;padding:8px 10px}.stat b{display:block;font-size:22px}
+.arow{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--bd)}.arow:first-of-type{border-top:0}.ainfo{flex:1;min-width:0;display:grid}.ainfo b,.ainfo span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lockb{display:grid;place-items:center;width:38px;height:38px;padding:0;flex:none}.lockb svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.lockb.on{color:var(--er);border-color:var(--er);background:rgba(251,113,133,.12)}
 </style>
 </head>
 <body>
@@ -242,7 +248,7 @@ button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed}
 <aside id="side">
 <div class="sh"><div class="brand wm"><span id="sm" class="mo2"></span>Dream AI</div><button id="bfold" title="Seitenleiste einklappen" aria-label="Seitenleiste einklappen">&laquo;</button></div>
 <button class="pri" id="bnew">Neuer Chat</button>
-<div class="nav" id="nav"><button data-v="g"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Geplant</button><button data-v="t"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6M12 2v3"/></svg>Timer</button><button data-v="k"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Kalender</button><button data-v="b"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg>Bilder</button><button data-v="v"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg>Videos</button><button data-v="f" id="navf" hidden><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>Feedback</button></div>
+<div class="nav" id="nav"><button data-v="g"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Geplant</button><button data-v="t"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6M12 2v3"/></svg>Timer</button><button data-v="k"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Kalender</button><button data-v="b"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg>Bilder</button><button data-v="v"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg>Videos</button><button data-v="f" id="navf" hidden><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Admin</button></div>
 <input id="q" placeholder="Chats durchsuchen (Strg+K)" aria-label="Chats durchsuchen">
 <div id="list"></div>
 <div class="acc">
@@ -333,6 +339,7 @@ button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed}
 <section class="sc"><h4><svg class="si" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Konto und Version</h4>
 <div class="row" style="margin-top:12px;align-items:center"><button id="cup">Nach Updates suchen</button></div>
 <div class="mu sm" id="ver" style="margin-top:8px"></div>
+<div class="mu sm" style="margin:14px 0 6px">Deine Konto-ID (für die Firebase-Einrichtung)</div><div class="row"><input id="uidv" readonly style="font-size:12px"><button id="uidc">Kopieren</button></div>
 <button id="cdel" class="dg">Konto und alle Chats löschen</button></section>
 </div>
 <div class="ft"><form method="dialog" style="flex:1"><button class="pri" style="width:100%;padding:10px">Fertig</button></form></div>
@@ -360,6 +367,8 @@ button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed}
 <div id="vatt"></div>
 <div class="vbar"><div class="vpill"><button id="vplus" aria-label="Datei oder Bild hinzufügen"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><input id="vin" autocomplete="off" placeholder="Dream AI hört zu …"><button id="vsend" hidden aria-label="Senden" style="background:#4468f0"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button></div><button class="vround" id="vmute" aria-label="Stumm schalten"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button><button class="vround white" id="vx" aria-label="Sprachmodus beenden"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 </div>
+<div id="gate" hidden><div class="gcard"><span id="glk" hidden><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><span id="gmo" hidden></span><h2 class="wm" id="gt" style="margin:0"></h2><p id="gx" style="margin:0;color:var(--mu);line-height:1.5"></p><button id="gout" hidden>Abmelden</button><button id="gadm" hidden>Admin-Anmeldung</button></div></div>
+<dialog id="dban"><h3 class="wm" style="margin:0;font-size:22px" id="dbt">Konto sperren</h3><div class="mu sm" id="dbn" style="margin-top:6px"></div><textarea id="dbr" rows="3" placeholder="Grund (wird dem Nutzer angezeigt)" style="margin-top:12px"></textarea><div class="row" style="margin-top:12px"><button id="dbx">Abbrechen</button><button class="pri" id="dbs">Sperren</button></div></dialog>
 <dialog id="dsrc"><h3 class="wm" style="margin:0;font-size:22px">Quellen</h3><div id="srcl" style="display:grid;gap:8px;margin-top:12px"></div><button class="pri" id="srcx" style="margin-top:12px;width:100%">Schließen</button></dialog>
 <dialog id="dfb"><h3 class="wm" style="margin:0;font-size:22px">Was war nicht gut?</h3><textarea id="fbt" rows="4" placeholder="Schreib kurz, was nicht gepasst hat (freiwillig)" style="margin-top:12px"></textarea><div class="row" style="margin-top:12px"><button id="fbx">Abbrechen</button><button class="pri" id="fbs">Senden</button></div></dialog>
 <dialog id="dios"><h3 class="wm" style="margin:0;font-size:22px">Auf dem iPhone installieren</h3>
@@ -373,8 +382,8 @@ button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed}
 <button class="pri" id="dix" style="margin-top:14px;width:100%">Verstanden</button></dialog>
 
 <script>
-const APP_VERSION='2.3.0';
-const APP_NOTES='Sprachmodus spricht zuverlässiger|Bilder und Dateien werden besser erkannt';
+const APP_VERSION='3.0.0';
+const APP_NOTES='Konten und Chats online mit Firebase|Admin-Bereich mit Sperren und Wartungsmodus|Übersichtlichere Nutzungsanzeige';
 const API_KEY='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';
 const $=s=>document.querySelector(s);
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v,(k,x)=>k[0]==='_'?undefined:x))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
@@ -385,8 +394,8 @@ const VISION='qwen/qwen3.8-27b',VISION2='qwen/qwen3.6-27b';
 const STUDIO='Enny/Olli Studio',ADMIN_USER='';
 const GOOGLE_KEY='AQ.Ab8RN6KURlyjkagcmhwcZsm7LUSJvH--15s34YyM9sZyg2-HlQ';
 const GEM_MODELS=['gemini-flash-lite-latest','gemini-flash-latest','gemini-2.5-flash-lite'];
-let MAXTOK=2200;
-const FIREBASE_CONFIG=null; /* später: Firebase-Zugangsdaten hier eintragen */
+let MAXTOK=2200,altModel='';
+const FB={key:'AIzaSyAxIeSx0tXxRFVtdpagNofSlCks7PNjhW8',db:'https://dream-ai-3691c-default-rtdb.firebaseio.com'};
 const IMG_NO='Bilder erstelle ich im Chat nicht mehr, weil es hier nicht so gut funktioniert hat. Bitte geh in der Seitenleiste auf „Bilder“ und erstelle sie dort. Das ist ein eigener Assistent, der nur Bilder erstellt.';
 const TOOLS=(mode)=>{const d=new Date(),W=['Du hast gerade keinen Zugriff auf das Internet. Wenn etwas nach deinem Wissen noch nicht erschienen ist, aber laut Datum schon erschienen sein könnte, sage ehrlich, dass du es nicht sicher weißt, und behaupte nie, dass es nicht existiert.','Wenn du für eine gute Antwort aktuelle Informationen brauchst oder etwas nicht sicher weißt, zum Beispiel bei Spielen, Releases, Preisen, Nachrichten, Wahrscheinlichkeiten, Personen, Produkten oder Webseiten, antworte ausschließlich mit [[WEB|kurze Suchanfrage]] und nichts sonst. Behaupte nie, dass etwas nicht existiert oder du nichts darüber weißt, ohne vorher so zu suchen.','Du hast Zugriff auf die Websuche. Nutze sie und antworte nur mit dem, was du gefunden hast. Erfinde nichts. Schreibe keine Quellenliste in den Text, die Quellen werden automatisch angezeigt.'][mode||0];return 'Heute ist '+d.toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+' ('+d.toLocaleDateString('sv-SE')+'), '+d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+' Uhr. Das ist das echte aktuelle Datum, auch wenn dein Wissen älter ist. '+W+' Timer und Termine: hänge ans Ende genau eine Zeile ohne Erklärung an: [[TIMER|Sekunden|Name]] oder [[KALENDER|JJJJ-MM-TT|HH:MM oder leer|Titel]] (Beispiel: [[TIMER|600|Nudeln]]), sonst nie solche Zeilen. Im Chat erstellst du keine Bilder: sage freundlich, dass das hier nicht gut funktioniert hat und man in der Seitenleiste auf Bilder gehen soll. Du siehst Bilder und Textdateien, die der Nutzer schickt. Bei einem Spiel oder einer Web-App sagst du vorher in einem Satz, dass die Spielerstellung in der Beta ist und Fehler auftreten können, und schreibst dann den ganzen Code als eine HTML-Datei (CSS und JS darin) in genau einen html-Codeblock. Bei Fragen nach Webseiten oder Diensten nenne die offizielle Hauptadresse als vollen Link (zum Beispiel https://poki.com), keine unsicheren Unterseiten. Bei genannten Webadressen beschreibe nur, was du wirklich findest. Texte zum Kopieren (Brief, E-Mail, Code) schreibst du in einen eigenen Codeblock mit text. Kinder: einfache kurze Sätze, kleine Schritt-für-Schritt-Anleitungen, nichts Unpassendes (zum Beispiel Spiele ab 18, sage das freundlich mit passendem Emoji und nenne Alternativen). Will ein Kind etwas Gefährliches allein tun (Herd, Messer, Steckdosen, Feuer, allein rausgehen, Fremden schreiben), sagst du freundlich „Stopp!“ und dass ein Erwachsener helfen muss. Wer allein oder traurig ist, auch nur per Emoji, bekommt echtes Mitgefühl. Bei Bitte um Hilfe: sofort ruhige Anweisungen Schritt für Schritt; bei Gefahr Notruf 112; Kinder mit Sorgen: Nummer gegen Kummer 116 111; Erwachsene: Telefonseelsorge 0800 111 0 111. Wer dich entwickelt hat: „Ich wurde vom '+STUDIO+' entwickelt.“ Über bekannte öffentliche Personen darfst du öffentliche Infos nennen; bei Privatpersonen keine privaten Daten (Adresse, Telefon, Familie), und sage offen, dass du sie nicht kennen kannst.'};
 const IMGSTYLE={normal:'',anim:'3D animated film style, vivid colors, soft lighting',cartoon:'classic 2D cartoon style, bold outlines, flat colors',real:'photorealistic, real photo, natural light, highly detailed'};
@@ -399,7 +408,7 @@ const moon=i=>'<svg viewBox="0 0 64 64"><defs><linearGradient id="g'+i+'" x1="0"
 const logo=i=>'<svg viewBox="0 0 64 64"><defs><linearGradient id="l'+i+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#93c5fd"/><stop offset="1" stop-color="#2563eb"/></linearGradient><mask id="m'+i+'"><rect width="64" height="64" fill="#fff"/><circle cx="43" cy="24" r="21" fill="#000"/></mask></defs><circle cx="29" cy="34" r="24" fill="url(#l'+i+')" mask="url(#m'+i+')"/><path d="M50 40l1.6 4.4 4.4 1.6-4.4 1.6L50 52l-1.6-4.4L44 46l4.4-1.6z" fill="#fff"/></svg>';
 const star=i=>'<svg viewBox="0 0 64 64"><defs><linearGradient id="s'+i+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#93c5fd"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs><path d="M32 2C34 20 44 30 62 32 44 34 34 44 32 62 30 44 20 34 2 32 20 30 30 20 32 2Z" fill="url(#s'+i+')"/></svg>';
 const fresh=new WeakSet(),push=m=>{fresh.add(m);cur.msgs.push(m);return m};
-let user=null,chats=[],cur=null,timers=[],busy=false,cfg=DEF,mode='in',ctl=null;
+let dname='',user=null,chats=[],cur=null,timers=[],busy=false,cfg=DEF,mode='in',ctl=null;
 
 /* Sternenhimmel */
 const cv=$('#sky'),cx=cv.getContext('2d');
@@ -422,7 +431,7 @@ addEventListener('pointermove',e=>{mx=e.clientX/W-.5;my=e.clientY/H-.5});
 addEventListener('resize',()=>{if(run)size()});
 
 /* Login */
-$('#mn').innerHTML=moon('a');$('#st').innerHTML=star('a');$('#sm').innerHTML=logo('b');$('#slg').innerHTML=logo('s');$('#apkic').innerHTML=logo('a');
+$('#mn').innerHTML=moon('a');$('#st').innerHTML=star('a');$('#sm').innerHTML=logo('b');$('#slg').innerHTML=logo('s');$('#gmo').innerHTML=logo('g');$('#apkic').innerHTML=logo('a');
 'Dream AI'.split('').forEach((c,i)=>{const s=document.createElement('span');s.textContent=c===' '?'\u00a0':c;s.style.animationDelay=(5+i*.09)+'s';$('#lh').append(s)});
 async function hash(p,salt){
   try{const b=new TextEncoder().encode(salt+p);const h=await crypto.subtle.digest('SHA-256',b);return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('')}
@@ -432,19 +441,30 @@ const lbl=()=>mode==='in'?'Anmelden':'Konto erstellen';
 function setMode(m){mode=m;$('#tabs').classList.toggle('up',m==='up');$('#t1').classList.toggle('on',m==='in');$('#t2').classList.toggle('on',m==='up');$('#lp2').hidden=$('#str').hidden=m==='in';$('#bgo').textContent=lbl();$('#lerr').textContent='';$('#lp').autocomplete=m==='in'?'current-password':'new-password'}
 function strength(){const p=$('#lp').value;let n=0;if(p.length>=8)n++;if(p.length>=12)n++;if(/[A-Z]/.test(p)&&/[a-z]/.test(p))n++;if(/\d/.test(p))n++;if(/[^\w\s]/.test(p))n++;const i=$('#str i');i.style.width=n*20+'%';i.style.background=n<2?'var(--er)':n<4?'var(--am)':'var(--q)'}
 async function go(){
-  const u=$('#lu').value.trim().toLowerCase(),p=$('#lp').value,b=$('#bgo'),c=$('.card');
+  const raw=$('#lu').value.trim(),u=raw.toLowerCase(),p=$('#lp').value,b=$('#bgo'),c=$('.card');
   const bad=t=>{$('#lerr').textContent=t;c.classList.remove('shake');void c.offsetWidth;c.classList.add('shake')};
   if(u.length<3||p.length<6)return bad('Benutzername mindestens 3 Zeichen, Passwort mindestens 6 Zeichen.');
-  b.disabled=true;b.textContent='Einen Moment';
-  const users=LS.get('ai:users',{});let ok=false;
-  if(mode==='up'){
-    if(users[u])bad('Dieser Benutzername ist schon vergeben.');
-    else if(p!==$('#lp2').value)bad('Die Passwörter stimmen nicht überein.');
-    else{const salt=[...crypto.getRandomValues(new Uint32Array(3))].join('');users[u]={salt,h:await hash(p,salt)};LS.set('ai:users',users);ok=true}
-  }else{const r=users[u];if(r&&r.h===await hash(p,r.salt))ok=true;else bad('Benutzername oder Passwort ist falsch.')}
+  if(new TextEncoder().encode(u).length>28)return bad('Der Benutzername ist zu lang (höchstens etwa 24 Zeichen).');
+  if(mode==='up'&&p!==$('#lp2').value)return bad('Die Passwörter stimmen nicht überein.');
+  if(mode==='up'&&maint&&maint.maintenance===true)return bad('Die Seite wird gerade aktualisiert. Eine Registrierung ist jetzt nicht möglich.');
+  b.disabled=true;b.textContent='Einen Moment';let ok=false;
+  try{
+    const mail=fbMail(u);let isNew=mode==='up',a;
+    try{a=await fbAuth(isNew?'signUp':'signInWithPassword',mail,p)}
+    catch(e){
+      const lu=LS.get('ai:users',{})[u];
+      if(!isNew&&lu&&['INVALID_LOGIN_CREDENTIALS','EMAIL_NOT_FOUND'].includes(e.code)&&lu.h===await hash(p,lu.salt)){a=await fbAuth('signUp',mail,p);isNew=true}
+      else throw e;
+    }
+    fb=a;fb.dn=raw;fb.mail=mail;LS.set('ai:fbauth',fb);
+    isAdmin=false;try{isAdmin=(await db('GET','admins/'+fb.uid))===true}catch(e){}
+    maintBypass=false;banned=null;await gate();
+    await cloudLogin(raw,isNew).catch(()=>{});
+    ok=!blocked();
+  }catch(e){fb=null;LS.del('ai:fbauth');bad(e.name==='TypeError'?'Keine Verbindung zum Konto-Server. Prüfe dein Internet.':(e.message||'Anmeldung nicht möglich.'))}
   b.disabled=false;b.textContent=lbl();
   if(!ok)return;
-  user=u;LS.set('ai:session',u);$('#lerr').textContent='';
+  user=u;dname=raw;LS.set('ai:session',u);$('#lerr').textContent='';
   $('#login').classList.add('go');sp=RM?0:48;
   setTimeout(()=>{start();$('#login').hidden=true;run=false;$('#login').classList.remove('go');sp=RM?0:.7;$('#app').classList.add('in');$('#login').classList.add('fast');if(!LS.get('ai:seen:'+user)){LS.set('ai:seen:'+user,1);welcome()}},RM?200:1250);
 }
@@ -458,14 +478,14 @@ $('#skip').onclick=()=>$('#login').classList.add('fast');
 function welcome(){const w=$('#wl'),c=()=>{w.classList.add('out');setTimeout(()=>{w.hidden=true},600)};w.hidden=false;w.classList.remove('out');w.onclick=c;setTimeout(c,3800)}
 /* App */
 function start(){
-  $('#app').hidden=false;$('#un').textContent=user;$('#av').textContent=user[0];
-  chats=LS.get('ai:chats:'+user,[]);cfg=Object.assign({},DEF,LS.get('ai:cfg2:'+user,{}));initCtrls();timers=LS.get('ai:timers:'+user,[]);cal=LS.get('ai:cal:'+user,[]);gal=LS.get('ai:gal:'+user,[]);limitUntil=LS.get('ai:lim:'+user,0);limitLen=LS.get('ai:limlen:'+user,0);if(LS.get('ai:limpend:'+user,0)&&!limitUntil)setTimeout(()=>showLimit(0),500);usage=LS.get('ai:usage:'+user,null);reqLog=LS.get('ai:reqs:'+user,[]);reqLogG=LS.get('ai:reqsg:'+user,[]);tokLogG=LS.get('ai:toksg:'+user,[]);tokLog=LS.get('ai:toks:'+user,[]);cur=chats[0]||null;renderAll();renderCal();$('#navf').hidden=!(ADMIN_USER&&user===ADMIN_USER);show('c');
+  $('#app').hidden=false;$('#un').textContent=dname||user;$('#av').textContent=(dname||user)[0].toUpperCase();
+  chats=LS.get('ai:chats:'+user,[]);cfg=Object.assign({},DEF,LS.get('ai:cfg2:'+user,{}));initCtrls();timers=LS.get('ai:timers:'+user,[]);cal=LS.get('ai:cal:'+user,[]);gal=LS.get('ai:gal:'+user,[]);limitUntil=LS.get('ai:lim:'+user,0);limitLen=LS.get('ai:limlen:'+user,0);if(LS.get('ai:limpend:'+user,0)&&!limitUntil)setTimeout(()=>showLimit(0),500);usage=LS.get('ai:usage:'+user,null);reqLog=LS.get('ai:reqs:'+user,[]);reqLogG=LS.get('ai:reqsg:'+user,[]);tokLogG=LS.get('ai:toksg:'+user,[]);tokLog=LS.get('ai:toks:'+user,[]);cur=chats[0]||null;renderAll();renderCal();$('#navf').hidden=!isAdmin;$('#uidv').value=fb?fb.uid:'';setTimeout(()=>cloudPull(true),300);show('c');
 }
 function logout(){
-  LS.set('ai:session',null);user=null;document.title='Dream AI';$('#app').hidden=true;$('#app').classList.remove('in');$('#login').hidden=false;
+  LS.set('ai:session',null);LS.del('ai:fbauth');fb=null;isAdmin=false;banned=null;maintBypass=false;dirty.clear();showGate();user=null;dname='';document.title='Dream AI';$('#app').hidden=true;$('#app').classList.remove('in');$('#login').hidden=false;
   $('#lu').value=$('#lp').value=$('#lp2').value='';strength();$('#login').classList.add('fast');run=true;size();frame();
 }
-const save=()=>LS.set('ai:chats:'+user,chats);
+const save=()=>{if(cur&&cur.id){cur.updated=Date.now();dirty.add(cur.id)}LS.set('ai:chats:'+user,chats);cloudQueue()};
 function newChat(){cur={id:Date.now(),title:'Neuer Chat',msgs:[]};chats.unshift(cur);save();renderAll();show('c');$('#in').focus()}
 function md(s){return s.split(/(```[\s\S]*?(?:```|$))/).map(p=>p.startsWith('```')?'<pre><code>'+esc(p.replace(/^```\w*\n?/,'').replace(/```$/,''))+'</code></pre>':esc(p).replace(/`([^`\n]+)`/g,'<code>$1</code>').replace(/\*\*([^*\n]+)\*\*/g,'<b>$1</b>').replace(/^#{1,3} (.+)$/gm,'<b>$1</b>').replace(/^[-*] /gm,'• ').replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>').replace(/(^|[\s(])(https?:\/\/[^\s<)]+)/g,(m,a,u)=>{const t=(u.match(/[.,;:!?]+$/)||[''])[0];u=u.slice(0,u.length-t.length);return a+'<a href="'+u+'" target="_blank" rel="noopener noreferrer">'+u+'</a>'+t})).join('')}
 function addCopy(pre){const c=pre.querySelector('code'),b=document.createElement('button');b.className='cpy';b.textContent='Kopieren';b.onclick=()=>{try{navigator.clipboard.writeText(c.textContent);b.textContent='Kopiert';setTimeout(()=>b.textContent='Kopieren',1500)}catch(e){}};pre.append(b)}
@@ -478,7 +498,7 @@ function renderList(){
     const d=document.createElement('div');d.className='it'+(cur&&cur.id===c.id?' on':'');
     const s=document.createElement('span');s.textContent=c.title;
     const x=document.createElement('button');x.textContent='×';x.title='Chat löschen';x.setAttribute('aria-label','Chat löschen');
-    x.onclick=e=>{e.stopPropagation();if(busy)return;chats=chats.filter(k=>k!==c);if(cur===c)cur=chats[0]||null;save();renderAll()};
+    x.onclick=e=>{e.stopPropagation();if(busy)return;chats=chats.filter(k=>k!==c);dirty.delete(c.id);cloudDel(c.id);if(cur===c)cur=chats[0]||null;save();renderAll()};
     d.onclick=()=>{if(busy)return;cur=c;renderAll();show('c')};
     d.append(s,x);l.append(d);
   });
@@ -593,7 +613,7 @@ async function typeOut(rep,node,text){
   rep.c=text;
 }
 async function gqStream(rep,hist,node,vis){
-  const mdl=vis?VISION:cfg.model;
+  const mdl=vis?VISION:(altModel||cfg.model);
   const call=(extra,m)=>fetchLog(APIURL,{method:'POST',signal:ctl.signal,headers:HDR(),body:JSON.stringify(Object.assign({model:m||mdl,messages:hist,stream:true,max_completion_tokens:MAXTOK},extra))});
   let res=await call(vis?{}:{reasoning_effort:cfg.effort});
   if(res.status===400&&!vis)res=await call({});
@@ -612,7 +632,7 @@ async function gqStream(rep,hist,node,vis){
 }
 async function gqWeb(rep,hist,node){
   rep.web=1;rep.c='';paint(node,rep,true);
-  const model=/gpt-oss/.test(cfg.model)?cfg.model:'openai/gpt-oss-20b';
+  const wm=altModel||cfg.model,model=/gpt-oss/.test(wm)?wm:'openai/gpt-oss-20b';
   const res=await fetchLog(APIURL,{method:'POST',signal:ctl.signal,headers:HDR(),body:JSON.stringify({model,messages:hist,stream:false,max_completion_tokens:1500,reasoning_effort:'low',tool_choice:'required',tools:[{type:'browser_search'}]})});
   await chk(res,'groq');
   const j=await res.json(),m=(j.choices&&j.choices[0]&&j.choices[0].message)||{};
@@ -676,7 +696,7 @@ async function ask(){
   const hm=cur.msgs.filter(x=>!x.err&&!x.tm).slice(-12);let vi=-1;hm.forEach((x,i)=>{if(x._f&&x._f.length)vi=i});const vis=vi>=0&&vi>=hm.length-4;
   if(vis&&GOOGLE_KEY)prov='google';
   const lu=[...hm].reverse().find(x=>x.r==='user'),tx=lu?lu.c:'',canWeb=!vis&&cfg.web!=='off';
-  MAXTOK=/spiel|game|code|programm|html|skript|script|\bapp\b|webseite/i.test(tx)?6000:(cfg.len==='short'?900:2200);
+  altModel='';MAXTOK=/spiel|game|code|programm|html|skript|script|\bapp\b|webseite/i.test(tx)?6000:(cfg.len==='short'?900:2200);
   const mk=(md,n,p)=>{const h=n?hm.slice(-n):hm;return [{role:'system',content:sysPrompt(md)}].concat(h.map((x,i)=>toApi(x,vis&&x===hm[vi],h.length-i>2,p==='google'?20000:4500)))};
   const rep=push({r:'assistant',c:''});let ab=false,lim=null;busy=true;ctl=new AbortController();
   const direct=canWeb&&WEBQ.test(tx);if(direct)rep.web=1;renderAll();
@@ -684,6 +704,7 @@ async function ask(){
   const go=async fn=>{
     try{await fn(prov)}catch(e){
       if(e.name==='AbortError')throw e;
+      if(e.limit&&prov==='groq'&&!vis&&!altModel){altModel=cfg.model==='openai/gpt-oss-120b'?'openai/gpt-oss-20b':'openai/gpt-oss-120b';toast('Dieses Modell ist am Limit. Ich nehme ein anderes bei Groq.');rep.c='';rep.src=null;await fn('groq');return}
       if(e.limit&&auto&&prov==='groq'){prov='google';toast('Groq ist am Limit. Google antwortet.');rep.c='';rep.src=null;await fn('google');return}
       if(e.big&&prov==='groq'&&GOOGLE_KEY){prov='google';toast('Das ist für Groq zu groß. Google antwortet.');rep.c='';rep.src=null;await fn('google');return}
       if(e.big&&prov==='google')throw e;
@@ -952,7 +973,7 @@ $('#fi').onchange=async e=>{
 
 
 /* Ansichten, Kalender, Aktionen der AI */
-let cal=[],gal=[],vw='c';const VT={c:'',t:'Timer',k:'Kalender',b:'Bilder',g:'Geplant',v:'Videos',f:'Feedback'};
+let cal=[],gal=[],vw='c';const VT={c:'',t:'Timer',k:'Kalender',b:'Bilder',g:'Geplant',v:'Videos',f:'Admin'};
 function show(v){
   vw=v;$('#msgs').hidden=$('.inp').hidden=v!=='c';
   [['t','#vt'],['k','#vk'],['b','#vb'],['g','#vg'],['v','#vv'],['f','#vf']].forEach(([k,q])=>$(q).hidden=v!==k);
@@ -960,7 +981,7 @@ function show(v){
   $('#ttl').textContent=v==='c'?(cur?cur.title:'Neuer Chat'):VT[v];
   if(v==='k'&&!$('#cd').value)$('#cd').value=new Date().toLocaleDateString('sv-SE');
   if(v==='b')renderGal();
-  if(v==='f')renderFb();
+  if(v==='f')renderAdmin();
   if(v==='c'){const m=$('#msgs');m.scrollTop=m.scrollHeight}
   $('#att').hidden=v!=='c';$('#disc').hidden=v!=='c';
   $('#side').classList.remove('open');
@@ -1040,12 +1061,16 @@ function provHint(){$('#provh').textContent=PH[cfg.prov||'groq']+(GOOGLE_KEY?'':
 function renderUsage(){
   const n=Date.now(),sumT=ms=>tokLog.filter(x=>n-x.t<ms).reduce((a,x)=>a+x.n,0),cnt=ms=>reqLog.filter(t=>n-t<ms).length;
   const gT=usage&&usage.lt&&n-usage.at<6e4,gR=usage&&usage.lq&&n-usage.at<36e5;
-  const rows=[['Tokens pro Minute',gT?usage.lt-usage.rt:sumT(6e4),gT?usage.lt:FREE.tpm,gT],['Anfragen pro Minute',cnt(6e4),FREE.rpm,false],['Anfragen pro Tag',gR?usage.lq-usage.rq:cnt(864e5),gR?usage.lq:FREE.rpd,gR],['Tokens pro Tag',sumT(864e5),FREE.tpd,false]];
+  const rows=[['Tokens pro Minute',gT?usage.lt-usage.rt:sumT(6e4),gT?usage.lt:FREE.tpm,gT],['Anfragen pro Minute',cnt(6e4),FREE.rpm,false],['Anfragen pro Tag',gR?usage.lq-usage.rq:cnt(864e5),gR?usage.lq:FREE.rpd,gR],['Tokens pro Tag',sumT(864e5),FREE.tpd,false]].map(([l,u,m,g])=>({l,u,m,g,p:Math.max(0,Math.min(100,Math.round(100*u/m)))}));
   const f=x=>Math.round(x).toLocaleString('de-DE');
+  const bar=(r,t)=>'<div style="margin-top:12px"><div style="display:flex;justify-content:space-between;gap:8px"><span class="mu sm">'+(t||r.l)+'</span><b>'+r.p+' %</b></div><div class="um'+(r.p>=85?' hi':'')+'"><i style="width:'+r.p+'%"></i></div><div class="mu sm" style="margin-top:3px;font-size:12px">'+f(r.u)+' von '+f(r.m)+' · '+(r.g?'Zahlen von Groq':'geschätzt')+'</div></div>';
+  const top=rows.reduce((a,b)=>b.p>a.p?b:a);
   let h='<div class="mu sm">Aktiver Anbieter: <b style="color:var(--tx)">'+({groq:'Groq',google:'Google',auto:'Automatisch (Groq, dann Google)'}[cfg.prov||'groq'])+'</b></div>';
-  rows.forEach(([l,u,m,g])=>{const p=Math.max(0,Math.min(100,Math.round(100*u/m)));h+='<div style="margin-top:12px"><div style="display:flex;justify-content:space-between;gap:8px"><span class="mu sm">'+l+'</span><b>'+p+' % verbraucht</b></div><div class="um'+(p>=85?' hi':'')+'"><i style="width:'+p+'%"></i></div><div class="mu sm" style="margin-top:3px;font-size:12px">'+f(u)+' von '+f(m)+' · '+(g?'Zahlen von Groq':'geschätzt')+'</div></div>'});
-  h+='<div class="mu sm" style="margin-top:12px">Bei „geschätzt“ rechnet die App mit den Grenzen des kostenlosen Groq-Plans. Hast du einen größeren Plan, sind die echten Grenzen höher.</div><div class="mu sm" style="margin-top:6px">Wenn Groq dich wirklich bremst, fragt dich die App, wie lange du warten möchtest.</div>';
-  if(GOOGLE_KEY){const cG=ms=>reqLogG.filter(t=>n-t<ms).length,tG=tokLogG.filter(x=>n-x.t<864e5).reduce((a,x)=>a+x.n,0);h+='<div class="mu sm" style="margin-top:14px">Google: '+cG(6e4)+' Anfragen in der letzten Minute, '+cG(864e5)+' in den letzten 24 Stunden, etwa '+f(tG)+' Tokens. Die Grenzen hängen von deinem Google-Konto ab, deshalb gibt es hier keine Prozentzahl.</div>'}
+  h+=bar(top,'Verbrauch gesamt (am stärksten: '+top.l+')');
+  h+='<details style="margin-top:12px"><summary class="mu sm" style="cursor:pointer">Alle Werte anzeigen</summary>'+rows.map(r=>bar(r)).join('')+'</details>';
+  h+='<div class="mu sm" style="margin-top:12px">Bei „geschätzt“ rechnet die App mit den Grenzen des kostenlosen Groq-Plans. Hast du einen größeren Plan, sind die echten Grenzen höher. Bei Groq hat jedes Modell eigene Grenzen, deshalb wechselt die App bei einem Limit zuerst auf ein zweites Groq-Modell.</div>';
+  if(GOOGLE_KEY){const cG=ms=>reqLogG.filter(t=>n-t<ms).length,tG=tokLogG.filter(x=>n-x.t<864e5).reduce((a,x)=>a+x.n,0);h+='<div class="mu sm" style="margin-top:10px">Google: '+cG(6e4)+' Anfragen in der letzten Minute, '+cG(864e5)+' in 24 Stunden, etwa '+f(tG)+' Tokens. Die Grenzen hängen von deinem Konto ab.</div>'}
+  h+='<div class="mu sm" style="margin-top:6px">Wenn der Anbieter dich wirklich bremst, fragt dich die App, wie lange du warten möchtest.</div>';
   $('#usg').innerHTML=h;
 }
 function setLock(l){
@@ -1077,7 +1102,7 @@ function showSrc(src){
 }
 $('#srcx').onclick=()=>$('#dsrc').close();
 const fbKey='ai:fb',fbList=()=>LS.get(fbKey,[]);
-function fbRemote(e){/* Vorbereitung für Firebase: hier später den Eintrag an die Datenbank senden */}
+
 function fbSave(e){const l=fbList();l.unshift(e);LS.set(fbKey,l.slice(0,300));fbRemote(e)}
 let fbMsg=null;
 function setFb(m,kind,comment){
@@ -1129,10 +1154,130 @@ $('#cs').oninput=()=>{cfg.extra=$('#cs').value;saveCfg()};
 $('#bset').onclick=()=>{renderUsage();$('#ver').textContent='Version '+APP_VERSION;$('#dlg').showModal()};
 $('#cx').onclick=()=>$('#dlg').close();
 $('#cup').onclick=()=>checkUpdate(true);
-$('#cdel').onclick=()=>{
+$('#cdel').onclick=async()=>{
   if(!confirm('Dein Konto und alle Chats werden unwiderruflich gelöscht. Fortfahren?'))return;
+  await cloudWipe();
   const u=LS.get('ai:users',{});delete u[user];LS.set('ai:users',u);['chats','cfg2','timers','seen','cal','gal','lim','limlen','limpend','usage','reqs','toks','reqsg','toksg'].forEach(k=>LS.del('ai:'+k+':'+user));$('#dlg').close();logout();
 };
+
+/* Firebase: Konten, Chats, Admin */
+let fb=null,isAdmin=false,maint=null,banned=null,maintBypass=false,cq=0;const dirty=new Set();
+const nd=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const arr=x=>Array.isArray(x)?x.filter(v=>v!=null):Object.values(x||{});
+const fdate=t=>t?new Date(t).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'–';
+const fbMail=u=>'u'+[...new TextEncoder().encode(u.toLowerCase())].map(x=>x.toString(16).padStart(2,'0')).join('')+'@dreamai.app';
+const FBE={EMAIL_EXISTS:'Dieser Benutzername ist schon vergeben.',INVALID_LOGIN_CREDENTIALS:'Benutzername oder Passwort ist falsch.',EMAIL_NOT_FOUND:'Benutzername oder Passwort ist falsch.',INVALID_PASSWORD:'Benutzername oder Passwort ist falsch.',USER_DISABLED:'Dieses Konto ist deaktiviert.',TOO_MANY_ATTEMPTS_TRY_LATER:'Zu viele Versuche. Bitte warte kurz.',OPERATION_NOT_ALLOWED:'Die Anmeldung mit Passwort ist in Firebase noch nicht aktiviert.',WEAK_PASSWORD:'Das Passwort ist zu schwach.'};
+async function fbAuth(kind,mail,pw){
+  const r=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:'+kind+'?key='+FB.key,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:mail,password:pw,returnSecureToken:true})});
+  const j=await r.json();
+  if(!r.ok){const c=String((j.error||{}).message||'').split(' ')[0],e=new Error(FBE[c]||'Anmeldung nicht möglich ('+c+').');e.code=c;throw e}
+  return{uid:j.localId,id:j.idToken,ref:j.refreshToken,exp:Date.now()+(+j.expiresIn-60)*1000};
+}
+async function fbToken(){
+  if(!fb)return null;
+  if(Date.now()<fb.exp)return fb.id;
+  const r=await fetch('https://securetoken.googleapis.com/v1/token?key='+FB.key,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'grant_type=refresh_token&refresh_token='+encodeURIComponent(fb.ref)});
+  const j=await r.json();if(!r.ok)throw new Error('Sitzung abgelaufen');
+  fb.id=j.id_token;fb.ref=j.refresh_token;fb.exp=Date.now()+(+j.expires_in-60)*1000;LS.set('ai:fbauth',fb);return fb.id;
+}
+async function db(method,path,body,q){
+  const t=await fbToken();
+  const r=await fetch(FB.db+'/'+path+'.json?'+(t?'auth='+encodeURIComponent(t)+'&':'')+(q||''),{method,headers:body!==undefined?{'Content-Type':'application/json'}:undefined,body:body!==undefined?JSON.stringify(body):undefined});
+  if(!r.ok){const e=new Error('DB '+r.status);e.status=r.status;throw e}
+  return r.json();
+}
+async function cloudLogin(dn,isNew){
+  const now=Date.now();let p=null;
+  if(!isNew)try{p=await db('GET','profiles/'+fb.uid)}catch(e){}
+  if(p&&p.name)await db('PATCH','profiles/'+fb.uid,{lastLogin:now});
+  else await db('PUT','profiles/'+fb.uid,{name:String(dn).slice(0,40),createdAt:now,lastLogin:now});
+  await db('POST','logins',{uid:fb.uid,name:String(dn).slice(0,40),time:now});
+}
+const blocked=()=>!$('#gate').hidden;
+function showGate(){
+  const g=$('#gate');let m=null;
+  if(banned&&banned.active===true&&!isAdmin)m={t:'Dein Konto wurde gesperrt',x:'Grund: '+(banned.reason||'Es wurde kein Grund angegeben.'),lock:1};
+  else if(maint&&maint.maintenance===true&&!isAdmin&&!maintBypass)m={t:'Die Seite wird gerade aktualisiert',x:maint.message||'Es werden Updates gemacht. Die Seite ist im Moment nicht betretbar.',adm:1};
+  g.hidden=!m;if(!m)return;
+  $('#gt').textContent=m.t;$('#gx').textContent=m.x;$('#glk').hidden=!m.lock;$('#gmo').hidden=!!m.lock;$('#gout').hidden=!fb;$('#gadm').hidden=!m.adm||!!fb;
+}
+async function gate(){
+  try{maint=await db('GET','site/status')}catch(e){}
+  if(fb){try{banned=await db('GET','bans/'+fb.uid)}catch(e){}}
+  showGate();
+}
+$('#gout').onclick=()=>logout();$('#gadm').onclick=()=>{maintBypass=true;showGate()};
+$('#uidc').onclick=()=>{try{navigator.clipboard.writeText($('#uidv').value);toast('Kopiert.')}catch(e){}};
+const cleanChat=c=>({id:c.id,title:String(c.title||'Chat').slice(0,120),updated:c.updated||c.id||Date.now(),msgs:(c.msgs||[]).map(m=>{const x={};for(const k in m){if(k[0]!=='_'&&k!=='th'&&m[k]!==undefined)x[k]=m[k]}return x})});
+const fixMsg=m=>{for(const k of ['links','src','files'])if(m[k]&&!Array.isArray(m[k]))m[k]=arr(m[k]);return m};
+function cloudQueue(){if(!fb)return;clearTimeout(cq);cq=setTimeout(cloudPush,2000)}
+async function cloudPush(){
+  if(!fb||!dirty.size)return;const ids=[...dirty];dirty.clear();const o={};
+  ids.forEach(id=>{const c=chats.find(x=>x.id===id);if(c)o[id]=cleanChat(c)});
+  if(!Object.keys(o).length)return;
+  try{await db('PATCH','chats/'+fb.uid,o)}catch(e){ids.forEach(i=>dirty.add(i))}
+}
+async function cloudDel(id){if(fb)try{await db('DELETE','chats/'+fb.uid+'/'+id)}catch(e){}}
+async function cloudPull(){
+  if(!fb)return;let c;try{c=await db('GET','chats/'+fb.uid)}catch(e){return}
+  const cl=arr(c).filter(x=>x&&x.id);let ch=false;
+  cl.forEach(x=>{x.msgs=arr(x.msgs).map(fixMsg);const i=chats.findIndex(y=>y.id===x.id);
+    if(i<0){chats.push(x);ch=true}else if((x.updated||0)>(chats[i].updated||chats[i].id)){if(cur===chats[i])cur=x;chats[i]=x;ch=true}});
+  chats.forEach(y=>{const o=cl.find(x=>x.id===y.id);if(!o||(y.updated||y.id)>(o.updated||0))dirty.add(y.id)});
+  if(ch){chats.sort((a,b)=>(b.updated||b.id)-(a.updated||a.id));LS.set('ai:chats:'+user,chats);if(!busy){if(!cur||!chats.includes(cur))cur=chats[0]||null;renderAll()}}
+  if(dirty.size)cloudQueue();
+}
+async function cloudWipe(){
+  if(!fb)return;
+  try{await db('DELETE','chats/'+fb.uid);await db('DELETE','profiles/'+fb.uid)}catch(e){}
+  try{const t=await fbToken();await fetch('https://identitytoolkit.googleapis.com/v1/accounts:delete?key='+FB.key,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({idToken:t})})}catch(e){}
+}
+async function restoreCloud(){
+  try{await fbToken()}catch(e){if(e.name!=='TypeError'){logout();return}}
+  try{isAdmin=(await db('GET','admins/'+fb.uid))===true}catch(e){}
+  $('#navf').hidden=!isAdmin;await gate();
+  if(Date.now()-(+LS.get('ai:lastlog',0)||0)>1800000){LS.set('ai:lastlog',Date.now());cloudLogin(dname,false).catch(()=>{})}
+}
+function fbRemote(e){if(!fb)return;db('POST','feedback',{uid:fb.uid,name:String(dname||user).slice(0,40),rating:e.rating,comment:String(e.comment||'').slice(0,500),q:String(e.q||'').slice(0,400),a:String(e.a||'').slice(0,600),time:e.t}).catch(()=>{})}
+const LOCK='<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+let banT=null;
+function openBan(p,bn,b){banT={id:p.id,bn};$('#dbt').textContent=bn?'Konto entsperren':'Konto sperren';$('#dbn').textContent=p.name+(bn&&b?' · Grund: '+(b.reason||''):'');$('#dbr').hidden=bn;$('#dbr').value='';$('#dbs').textContent=bn?'Entsperren':'Sperren';$('#dban').showModal()}
+$('#dbx').onclick=()=>$('#dban').close();
+$('#dbs').onclick=async()=>{
+  const t=banT;if(!t)return;
+  try{if(t.bn)await db('DELETE','bans/'+t.id);else await db('PUT','bans/'+t.id,{active:true,reason:($('#dbr').value.trim()||'Kein Grund angegeben').slice(0,500),at:Date.now(),by:String(dname||user).slice(0,40)});$('#dban').close();toast(t.bn?'Konto entsperrt.':'Konto gesperrt.');renderAdmin()}
+  catch(e){toast('Das hat nicht geklappt ('+(e.status||'Netz')+').')}
+};
+async function renderAdmin(){
+  const box=$('#fbl');box.innerHTML='<div class="mu sm">Lädt …</div>';$('#fbn').textContent='';
+  if(!isAdmin){box.innerHTML='<div class="mu sm">Kein Zugriff.</div>';return}
+  const oq='orderBy='+encodeURIComponent('"time"')+'&limitToLast=40';let P,B,LG,FD,S;
+  try{[P,B,LG,FD,S]=await Promise.all([db('GET','profiles'),db('GET','bans'),db('GET','logins',undefined,oq),db('GET','feedback',undefined,oq),db('GET','site/status')])}
+  catch(e){box.innerHTML='<div class="mu sm">Die Daten konnten nicht geladen werden ('+(e.status||'Netz')+').</div>';return}
+  P=P||{};B=B||{};
+  const profs=Object.entries(P).map(([id,v])=>Object.assign({id},v)).sort((a,b)=>(b.lastLogin||0)-(a.lastLogin||0));
+  const logs=Object.values(LG||{}).sort((a,b)=>b.time-a.time),fds=Object.values(FD||{}).sort((a,b)=>b.time-a.time);
+  const nb=Object.values(B).filter(x=>x&&x.active===true).length,up=fds.filter(x=>x.rating==='up').length,day=logs.filter(x=>Date.now()-x.time<864e5).length;
+  box.innerHTML='';const sec=t=>{const e=nd('section','asec');e.append(nd('h4','',t));box.append(e);return e};
+  let s=sec('Übersicht');const g=nd('div','stats');
+  [['Konten',profs.length],['Gesperrt',nb],['Anmeldungen heute',day],['Feedback (hoch / runter)',up+' / '+(fds.length-up)]].forEach(([l,v])=>{const c=nd('div','stat');c.append(nd('b','',v),nd('span','mu sm',l));g.append(c)});s.append(g);
+  s=sec('Webseite');const on=!!(S&&S.maintenance===true);
+  s.append(nd('div','mu sm',on?'Die Webseite ist gestoppt. Nur du kommst noch hinein.':'Die Webseite ist offen.'));
+  const ta=nd('textarea');ta.rows=2;ta.style.marginTop='8px';ta.placeholder='Nachricht für alle, zum Beispiel: Es werden Updates gemacht.';ta.value=on?(S.message||''):'';
+  const bt=nd('button',on?'':'pri',on?'Webseite wieder freigeben':'Webseite stoppen');bt.style.cssText='margin-top:8px;width:100%';
+  bt.onclick=async()=>{if(!on&&!confirm('Die Webseite für alle außer dir sperren?'))return;
+    const o={maintenance:!on,since:Date.now()},m=ta.value.trim().slice(0,300);if(m&&!on)o.message=m;
+    try{await db('PUT','site/status',o);toast(on?'Die Webseite ist wieder offen.':'Die Webseite ist jetzt gestoppt.');renderAdmin()}catch(e){toast('Das hat nicht geklappt ('+(e.status||'Netz')+').')}};
+  s.append(ta,bt);
+  s=sec('Konten ('+profs.length+')');
+  profs.forEach(p=>{const b=B[p.id],bn=!!(b&&b.active===true),r=nd('div','arow'),t=nd('div','ainfo');
+    t.append(nd('b','',p.name||'?'),nd('span','mu sm','zuletzt '+fdate(p.lastLogin)+(bn?' · gesperrt: '+(b.reason||''):'')));
+    const k=nd('button','lockb'+(bn?' on':''));k.innerHTML=LOCK;k.title=bn?'Entsperren':'Sperren';if(fb&&p.id===fb.uid)k.disabled=true;k.onclick=()=>openBan(p,bn,b);r.append(t,k);s.append(r)});
+  s=sec('Letzte Anmeldungen');if(!logs.length)s.append(nd('div','mu sm','Noch keine.'));
+  logs.slice(0,25).forEach(x=>{const r=nd('div','arow');r.append(nd('b','',x.name||'?'),nd('span','mu sm',fdate(x.time)));r.firstChild.style.flex='1';s.append(r)});
+  s=sec('Feedback');if(!fds.length)s.append(nd('div','mu sm','Noch keine.'));
+  fds.slice(0,20).forEach(x=>{const r=nd('div','fbi');r.style.marginTop='8px';r.append(nd('div','mu sm',fdate(x.time)+' · '+x.name+' · '+(x.rating==='up'?'Daumen hoch':'Daumen runter')));if(x.comment)r.append(nd('div','',x.comment));const q=nd('div','mu sm','Frage: '+(x.q||'')+' | Antwort: '+(x.a||''));q.style.marginTop='6px';r.append(q);s.append(r)});
+}
 
 /* Updates */
 const newer=(a,b)=>{const x=String(a).split('.').map(Number),y=String(b).split('.').map(Number);for(let i=0;i<3;i++){const p=x[i]||0,q=y[i]||0;if(p!==q)return p>q}return false};
@@ -1166,15 +1311,16 @@ function showUp(from,to,notes){
 }
 
 /* Start */
-const us=LS.get('ai:users',{}),ss=LS.get('ai:session',null);
-if(ss&&us[ss]){user=ss;$('#login').hidden=true;run=false;start()}else{size();frame()}
+const ss=LS.get('ai:session',null),fbs=LS.get('ai:fbauth',null);
+if(ss&&fbs&&fbs.uid){fb=fbs;user=ss;dname=fbs.dn||ss;$('#login').hidden=true;run=false;start();restoreCloud()}else{size();frame()}
+gate();setInterval(gate,30000);
 (function(){
   const last=LS.get('ai:ver',null),u=LS.get('ai:upg',null);LS.del('ai:upg');
   if(last&&newer(APP_VERSION,last))showUp(last,APP_VERSION,u&&u.to===APP_VERSION?u.notes:APP_NOTES);
   LS.set('ai:ver',APP_VERSION);
 })();
 checkUpdate();setInterval(()=>checkUpdate(),180000);
-addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()-lastChk>60000)checkUpdate()});
+addEventListener('visibilitychange',()=>{if(!document.hidden){gate();if(!busy)cloudPull();if(Date.now()-lastChk>60000)checkUpdate()}});
 </script>
 </body>
 </html>
