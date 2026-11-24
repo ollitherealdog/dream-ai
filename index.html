@@ -382,8 +382,8 @@ button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed}
 <button class="pri" id="dix" style="margin-top:14px;width:100%">Verstanden</button></dialog>
 
 <script>
-const APP_VERSION='3.0.0';
-const APP_NOTES='Konten und Chats online mit Firebase|Admin-Bereich mit Sperren und Wartungsmodus|Übersichtlichere Nutzungsanzeige';
+const APP_VERSION='3.0.1';
+const APP_NOTES='Admin-Erkennung auch ohne Eintrag in der Datenbank';
 const API_KEY='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';
 const $=s=>document.querySelector(s);
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v,(k,x)=>k[0]==='_'?undefined:x))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
@@ -457,7 +457,7 @@ async function go(){
       else throw e;
     }
     fb=a;fb.dn=raw;fb.mail=mail;LS.set('ai:fbauth',fb);
-    isAdmin=false;try{isAdmin=(await db('GET','admins/'+fb.uid))===true}catch(e){}
+    isAdmin=await chkAdmin();
     maintBypass=false;banned=null;await gate();
     await cloudLogin(raw,isNew).catch(()=>{});
     ok=!blocked();
@@ -1186,6 +1186,10 @@ async function db(method,path,body,q){
   if(!r.ok){const e=new Error('DB '+r.status);e.status=r.status;throw e}
   return r.json();
 }
+async function chkAdmin(){
+  try{if((await db('GET','admins/'+fb.uid))===true)return true}catch(e){}
+  try{await db('GET','profiles',undefined,'shallow=true');return true}catch(e){return false}
+}
 async function cloudLogin(dn,isNew){
   const now=Date.now();let p=null;
   if(!isNew)try{p=await db('GET','profiles/'+fb.uid)}catch(e){}
@@ -1234,7 +1238,7 @@ async function cloudWipe(){
 }
 async function restoreCloud(){
   try{await fbToken()}catch(e){if(e.name!=='TypeError'){logout();return}}
-  try{isAdmin=(await db('GET','admins/'+fb.uid))===true}catch(e){}
+  isAdmin=await chkAdmin();
   $('#navf').hidden=!isAdmin;await gate();
   if(Date.now()-(+LS.get('ai:lastlog',0)||0)>1800000){LS.set('ai:lastlog',Date.now());cloudLogin(dname,false).catch(()=>{})}
 }
