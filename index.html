@@ -236,7 +236,7 @@ button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed}
 <input id="lp2" type="password" placeholder="Passwort wiederholen" autocomplete="new-password" hidden>
 <div id="lerr" class="err"></div>
 <button class="pri" id="bgo" style="padding:11px">Anmelden</button>
-<div class="mu sm" style="text-align:center">Konten und Chats bleiben lokal in diesem Browser.</div>
+<div class="mu sm" style="text-align:center">Konten und Chats werden online gespeichert.</div>
 </div>
 </div>
 <button class="sk" id="skip">Intro überspringen</button>
@@ -382,8 +382,8 @@ button:disabled,textarea:disabled{opacity:.45;cursor:not-allowed}
 <button class="pri" id="dix" style="margin-top:14px;width:100%">Verstanden</button></dialog>
 
 <script>
-const APP_VERSION='3.0.1';
-const APP_NOTES='Admin-Erkennung auch ohne Eintrag in der Datenbank';
+const APP_VERSION='3.0.2';
+const APP_NOTES='Klarere Meldung, wenn Firebase-Anmeldung noch nicht eingeschaltet ist';
 const API_KEY='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';
 const $=s=>document.querySelector(s);
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v,(k,x)=>k[0]==='_'?undefined:x))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
@@ -1166,7 +1166,7 @@ const nd=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=nu
 const arr=x=>Array.isArray(x)?x.filter(v=>v!=null):Object.values(x||{});
 const fdate=t=>t?new Date(t).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'–';
 const fbMail=u=>'u'+[...new TextEncoder().encode(u.toLowerCase())].map(x=>x.toString(16).padStart(2,'0')).join('')+'@dreamai.app';
-const FBE={EMAIL_EXISTS:'Dieser Benutzername ist schon vergeben.',INVALID_LOGIN_CREDENTIALS:'Benutzername oder Passwort ist falsch.',EMAIL_NOT_FOUND:'Benutzername oder Passwort ist falsch.',INVALID_PASSWORD:'Benutzername oder Passwort ist falsch.',USER_DISABLED:'Dieses Konto ist deaktiviert.',TOO_MANY_ATTEMPTS_TRY_LATER:'Zu viele Versuche. Bitte warte kurz.',OPERATION_NOT_ALLOWED:'Die Anmeldung mit Passwort ist in Firebase noch nicht aktiviert.',WEAK_PASSWORD:'Das Passwort ist zu schwach.'};
+const FBE={EMAIL_EXISTS:'Dieser Benutzername ist schon vergeben.',INVALID_LOGIN_CREDENTIALS:'Benutzername oder Passwort ist falsch.',EMAIL_NOT_FOUND:'Benutzername oder Passwort ist falsch.',INVALID_PASSWORD:'Benutzername oder Passwort ist falsch.',USER_DISABLED:'Dieses Konto ist deaktiviert.',TOO_MANY_ATTEMPTS_TRY_LATER:'Zu viele Versuche. Bitte warte kurz.',OPERATION_NOT_ALLOWED:'Die Anmeldung mit Passwort ist in Firebase noch nicht aktiviert.',CONFIGURATION_NOT_FOUND:'Firebase Authentication ist noch nicht eingerichtet. Öffne in Firebase „Authentication“, tippe auf „Jetzt starten“ und schalte „E-Mail/Passwort“ ein.',API_KEY_INVALID:'Der Firebase-Schlüssel wird abgelehnt.',WEAK_PASSWORD:'Das Passwort ist zu schwach.'};
 async function fbAuth(kind,mail,pw){
   const r=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:'+kind+'?key='+FB.key,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:mail,password:pw,returnSecureToken:true})});
   const j=await r.json();
